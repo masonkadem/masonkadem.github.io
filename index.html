@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mason Kadem · McMaster University</title>
   <meta name="description" content="Mason Kadem · PhD Candidate in Computer Science at McMaster University and CIHR Doctoral Scholar">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
   <style>
-    /* Base Reset & Typography */
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -19,58 +21,61 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
-      color: #222222;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fbfaf7;
+      color: #1c1b18;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: 15.5px;
-      line-height: 1.62;
+      line-height: 1.68;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Main Centered Single Column */
     .container {
       max-width: 780px;
       margin: 0 auto;
-      padding: 48px 22px 64px;
+      padding: 52px 24px 72px;
     }
 
-    /* Academic Links */
     a {
-      color: #1772d0;
-      text-decoration: none;
-      transition: color 0.14s ease;
+      color: #9e3b24;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: opacity 0.15s ease;
     }
 
     a:hover,
     a:focus-visible {
-      color: #f09228;
-      text-decoration: underline;
+      opacity: 0.74;
     }
 
-    /* Subtle Achievement Highlights */
-    mark {
-      background: #fff3bf;
+    mark.hl {
+      background-color: rgba(217, 146, 46, 0.22);
       color: inherit;
-      padding: 0 3px;
-      border-radius: 2px;
+      padding: 1px 4px;
+      border-radius: 3px;
     }
 
-    /* Top Bio Header */
+    mark.hl a {
+      color: #872e19;
+      font-weight: 500;
+    }
+
+    /* Top Profile Header */
     .bio-header {
       display: flex;
       align-items: flex-start;
       gap: 28px;
-      margin-bottom: 34px;
+      margin-bottom: 22px;
     }
 
     .avatar-wrap {
-      flex: 0 0 150px;
-      width: 150px;
-      height: 150px;
+      flex: 0 0 144px;
+      width: 144px;
+      height: 144px;
       border-radius: 50%;
       overflow: hidden;
-      border: 1px solid #e5e7eb;
-      background-color: #f6f8fa;
+      border: 1px solid #e2ddd2;
+      background-color: #f2efe7;
       margin-top: 4px;
     }
 
@@ -82,62 +87,86 @@
       object-position: center top;
     }
 
-    .bio-body {
+    .bio-intro {
       flex: 1 1 auto;
       min-width: 0;
     }
 
-    .bio-body h1 {
-      margin: 0 0 4px;
-      font-size: 30px;
+    .bio-intro h1 {
+      margin: 0 0 6px;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 34px;
       font-weight: 600;
       letter-spacing: -0.02em;
-      line-height: 1.2;
-      color: #111111;
+      line-height: 1.15;
+      color: #161513;
     }
 
     .bio-subtitle {
       margin: 0 0 14px;
       font-size: 14.5px;
-      color: #555555;
+      color: #57534a;
       font-weight: 500;
     }
 
-    .bio-body p {
-      margin: 0 0 12px;
-    }
-
-    .bio-links {
-      margin-top: 14px;
-      font-size: 14.5px;
-      color: #888888;
+    .pill-links {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 6px;
+      gap: 7px;
+      margin: 0;
     }
 
-    .bio-links .sep {
-      color: #bbbbbb;
-      user-select: none;
+    .pill {
+      display: inline-block;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+      font-size: 12.5px;
+      color: #1c1b18;
+      background-color: #f2efe7;
+      border: 1px solid #e2ddd2;
+      border-radius: 999px;
+      padding: 4px 12px;
+      text-decoration: none;
+      transition: border-color 0.15s ease, color 0.15s ease;
     }
 
-    /* Section Structure */
+    .pill:hover,
+    .pill:focus-visible {
+      border-color: #9e3b24;
+      color: #9e3b24;
+      opacity: 1;
+    }
+
+    /* Multi-Paragraph Bio Prose */
+    .bio-prose {
+      margin-top: 10px;
+    }
+
+    .bio-prose p {
+      margin: 0 0 15px;
+      color: #23211d;
+    }
+
+    .bio-prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Section Dividers & Headings */
     .section {
-      padding-top: 26px;
-      margin-top: 26px;
-      border-top: 1px solid #eeeeee;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid #e5e0d5;
     }
 
     .section h2 {
-      margin: 0 0 16px;
-      font-size: 20px;
+      margin: 0 0 18px;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 23px;
       font-weight: 600;
       letter-spacing: -0.01em;
-      color: #111111;
+      color: #161513;
     }
 
-    /* Media Cards (Karpathy-style Left Thumbnail + Right Description) */
+    /* Featured Media & Talks */
     .media-list {
       display: flex;
       flex-direction: column;
@@ -149,18 +178,23 @@
       display: flex;
       align-items: center;
       gap: 18px;
+      background-color: #ffffff;
+      border: 1px solid #e5e0d5;
+      border-radius: 8px;
+      padding: 12px;
     }
 
     .media-thumb {
       position: relative;
-      flex: 0 0 180px;
-      width: 180px;
-      height: 102px;
+      flex: 0 0 176px;
+      width: 176px;
+      height: 100px;
       border-radius: 6px;
       overflow: hidden;
-      border: 1px solid #e5e7eb;
-      background-color: #f3f4f6;
+      border: 1px solid #e5e0d5;
+      background-color: #f2efe7;
       display: block;
+      text-decoration: none;
     }
 
     .media-thumb img {
@@ -175,7 +209,6 @@
       transform: scale(1.03);
     }
 
-    /* Subtle Play Badge Overlay */
     .badge-overlay {
       position: absolute;
       right: 8px;
@@ -183,7 +216,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: rgba(17, 17, 17, 0.78);
+      background: rgba(22, 21, 19, 0.82);
       color: #ffffff;
       display: flex;
       align-items: center;
@@ -191,9 +224,8 @@
       pointer-events: none;
     }
 
-    /* Podcast SVG Thumbnail Box */
     .podcast-thumb {
-      background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+      background: linear-gradient(135deg, #f7f4ec 0%, #ede8dc 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -205,90 +237,146 @@
     }
 
     .media-title {
-      font-size: 15.5px;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 17.5px;
       font-weight: 600;
-      line-height: 1.35;
-      margin: 0 0 4px;
-      color: #222222;
+      line-height: 1.32;
+      margin: 0 0 5px;
+      color: #161513;
+    }
+
+    .media-title a {
+      color: #161513;
+      text-decoration: none;
+    }
+
+    .media-title a:hover {
+      color: #9e3b24;
+      text-decoration: underline;
     }
 
     .media-sub {
       margin: 0;
       font-size: 14px;
       line-height: 1.5;
-      color: #555555;
+      color: #57534a;
     }
 
-    /* Compact Competition & Conference List */
+    /* Compact Talk & Award Rows */
     .compact-list {
       list-style: none;
       margin: 0;
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 8px;
     }
 
     .compact-list li {
       font-size: 14.5px;
-      color: #333333;
-      line-height: 1.5;
+      color: #2b2924;
+      line-height: 1.52;
     }
 
     .year-tag {
       display: inline-block;
-      min-width: 38px;
-      font-variant-numeric: tabular-nums;
-      color: #666666;
-      font-weight: 500;
+      min-width: 42px;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+      font-size: 13px;
+      color: #7b766b;
     }
 
-    /* Selected Research List */
+    /* Selected Publications List */
     .pub-list {
       list-style: none;
       margin: 0;
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 13px;
     }
 
     .pub-list li {
-      line-height: 1.55;
-      color: #222222;
+      line-height: 1.58;
+      color: #23211d;
     }
 
     .pub-title {
       font-weight: 600;
-      color: #111111;
+      color: #161513;
     }
 
     .pub-venue {
       font-style: italic;
-      color: #555555;
+      color: #57534a;
     }
 
-    .pub-note {
-      color: #444444;
+    .pub-badge {
+      display: inline-block;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+      font-size: 12px;
+      background-color: rgba(158, 59, 36, 0.10);
+      color: #9e3b24;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-weight: 500;
     }
 
-    /* Native Accordion for 20 Courses */
-    .teaching-copy {
-      margin: 0 0 14px;
+    /* Highlighted Textbook Card */
+    .book-card {
+      background-color: #ffffff;
+      border: 1px solid #e2ddd2;
+      border-left: 3px solid #9e3b24;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 18px;
+      margin-bottom: 16px;
     }
 
+    .book-kicker {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #9e3b24;
+      font-weight: 500;
+      margin: 0 0 4px;
+    }
+
+    .book-title {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 19px;
+      font-weight: 600;
+      margin: 0 0 6px;
+      color: #161513;
+    }
+
+    .book-desc {
+      margin: 0 0 10px;
+      font-size: 14.5px;
+      color: #49453d;
+    }
+
+    .book-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+      font-size: 13px;
+    }
+
+    /* Native Expandable 20-Course Catalog */
     details.course-details {
-      border: 1px solid #e5e7eb;
-      border-radius: 6px;
-      background-color: #fafafa;
-      padding: 10px 14px;
+      border: 1px solid #e2ddd2;
+      border-radius: 8px;
+      background-color: #f4f1ea;
+      padding: 11px 15px;
     }
 
     details.course-details summary {
       cursor: pointer;
       font-size: 14.5px;
       font-weight: 500;
-      color: #1772d0;
+      color: #9e3b24;
       list-style: none;
       display: flex;
       align-items: center;
@@ -304,7 +392,7 @@
       content: "▸";
       display: inline-block;
       font-size: 13px;
-      color: #555555;
+      color: #57534a;
       transition: transform 0.15s ease;
     }
 
@@ -312,14 +400,10 @@
       transform: rotate(90deg);
     }
 
-    details.course-details summary:hover {
-      color: #f09228;
-    }
-
     .course-grid {
       margin-top: 12px;
       padding-top: 12px;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid #e2ddd2;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px 18px;
@@ -331,68 +415,72 @@
     .course-grid li {
       font-size: 13.5px;
       line-height: 1.45;
-      color: #333333;
+      color: #2b2924;
     }
 
     .course-code {
-      font-weight: 600;
-      color: #111111;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #161513;
     }
 
     .course-inst {
-      color: #666666;
+      color: #6c675d;
       font-size: 12.5px;
     }
 
-    /* Education List */
+    /* Education & Credentials */
     .edu-list {
       list-style: none;
       margin: 0;
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 10px;
     }
 
     .edu-list li {
-      line-height: 1.55;
-      color: #333333;
+      line-height: 1.56;
+      color: #2b2924;
     }
 
     .edu-degree {
       font-weight: 600;
-      color: #111111;
+      color: #161513;
     }
 
-    /* Minimal Footer */
+    /* Footer */
     footer {
-      margin-top: 40px;
+      margin-top: 44px;
       padding-top: 18px;
-      border-top: 1px solid #eeeeee;
-      font-size: 13.5px;
-      color: #777777;
-      text-align: center;
+      border-top: 1px solid #e5e0d5;
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+      font-size: 13px;
+      color: #7b766b;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
     }
 
-    /* Responsive Mobile Layout */
     @media (max-width: 640px) {
       .container {
-        padding: 32px 18px 48px;
+        padding: 34px 18px 52px;
       }
 
       .bio-header {
         flex-direction: column;
         align-items: center;
-        text-align: left;
-        gap: 18px;
+        gap: 16px;
       }
 
-      .bio-body h1,
+      .bio-intro h1,
       .bio-subtitle {
         text-align: center;
       }
 
-      .bio-links {
+      .pill-links {
         justify-content: center;
       }
 
@@ -404,8 +492,8 @@
 
       .media-thumb {
         width: 100%;
-        max-width: 300px;
-        height: 168px;
+        max-width: 320px;
+        height: 180px;
         flex: 0 0 auto;
       }
 
@@ -418,46 +506,56 @@
 <body>
   <main class="container">
 
-    <!-- Top Bio Header -->
+    <!-- Top Profile Header -->
     <header class="bio-header">
       <div class="avatar-wrap">
-        <img src="masonpic_rectcrop.jpg" alt="Mason Kadem" width="150" height="150">
+        <img src="masonpic_rectcrop.jpg" alt="Mason Kadem" width="144" height="144">
       </div>
 
-      <div class="bio-body">
+      <div class="bio-intro">
         <h1>Mason Kadem</h1>
-        <p class="bio-subtitle">PhD Candidate in Computer Science, McMaster University · CIHR Doctoral Scholar</p>
+        <p class="bio-subtitle"> AI Researcher. Artificial & Biological Neural Networks · CS PhD @ McMaster University · CIHR Doctoral Scholar · Prevously, CS College Prof · Author of 'Pearls and Perils of Machine Learing'</p>
 
-        <p>
-          I am a <mark>CIHR PhD Scholar</mark> in Computer Science at McMaster University working with Rong Zheng in <mark>mechanistic interpretability</mark>, which studies what a trained network computes internally. My neuroscience and biomedical engineering training give me a useful lens here, because the same questions we ask about biological brains, like what each region computes and how signals flow between them, are now the questions we ask about transformers.
-        </p>
-
-        <p>
-          Alongside my PhD, I served as <mark>Head of AI at McMaster's Vascular AI</mark> for five years, leading machine learning projects on brain blood flow, and as <mark>Founder at Ro (Research Online)</mark>, an incubated health technology startup for large-scale online physiological research supported by Hamilton's Innovation Factory and The Clinic at McMaster. From 2022 to 2025 I was Professor of Computer Science at Mohawk College and authored the textbook <mark>Pearls and Perils of Machine Learning</mark>. I have secured <mark>over $210,000 in research and business funding</mark>, including a $120,000 CIHR Doctoral Scholarship and a $90,000 MITACS Accelerate Entrepreneur grant, and was nominated for the <mark>Vanier Canada Graduate Scholarship</mark>.
-        </p>
-
-        <nav class="bio-links" aria-label="External profiles">
-          <a href="mailto:mason.kadem@gmail.com">Email</a>
-          <span class="sep">/</span>
-          <a href="https://scholar.google.com/citations?user=DFb3ztIAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-          <span class="sep">/</span>
-          <a href="https://github.com/masonkadem" target="_blank" rel="noopener">GitHub</a>
-          <span class="sep">/</span>
-          <a href="https://www.linkedin.com/in/mkadem" target="_blank" rel="noopener">LinkedIn</a>
-          <span class="sep">/</span>
-          <a href="https://linktr.ee/masonkadem" target="_blank" rel="noopener">Linktree</a>
-          <span class="sep">/</span>
-          <a href="cv.pdf">CV</a>
+        <nav class="pill-links" aria-label="Primary links">
+          <a class="pill" href="https://campusebookstore.com/searchproduct/ebookdetail.aspx?ID=9740529" target="_blank" rel="noopener">Textbook</a>
+          <a class="pill" href="https://scholar.google.com/citations?user=DFb3ztIAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="pill" href="https://github.com/masonkadem" target="_blank" rel="noopener">GitHub</a>
+          <a class="pill" href="https://www.linkedin.com/in/mkadem" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="pill" href="https://linktr.ee/masonkadem" target="_blank" rel="noopener">Linktree</a>
+          <a class="pill" href="cv.pdf">CV</a>
+          <a class="pill" href="mailto:mason.kadem@gmail.com">Email</a>
         </nav>
       </div>
     </header>
 
-    <!-- 1. Featured Video, Podcast & Talks -->
+    <!-- Multi-Paragraph Rich Bio -->
+    <div class="bio-prose">
+      <p>
+        Hi, I'm Mason! I'm an AI researcher, educator, and CIHR PhD Scholar. research investigates how artificial and biological neural networks compute, combining mechanistic interpretability, domain-informed deep learning, and physiological signal modelling to open the black box of health AI. My neuroscience training give me a useful lens here, because the same questions we ask about biological brains, like what each region computes and how signals flow between them, are now the questions we ask about transformers. During my PhD I was awarded the <mark class="hl">CIHR Doctoral Scholarship ($120,000)</mark> and nominated for the <mark class="hl">Vanier Canada Graduate Scholarship</mark>.
+      </p>
+
+      <p>
+        My recent <mark class="hl"><a href="https://arxiv.org/abs/2601.04398" target="_blank" rel="noopener">arXiv paper on controlling transformer internals through attention head intervention</a></mark> has been picked up and discussed in several technical blogs on interpretability. I also developed a method for multi-site signal fusion and cross-site transformer auditing that <mark class="hl">outperforms the previous best by 20%</mark>, won the <mark class="hl">People's Choice Award at the NSERC CREATE sMAP symposium</mark>, and is the subject of a <mark class="hl">United States provisional patent filed through the McMaster Industry Liaison Office</mark>. On wearable sleep staging, my work was published at <mark class="hl"><a href="http://www.ieee-aiot.org/2025/accepted-papers.php" target="_blank" rel="noopener">IEEE AIoT 2025 in Osaka, Japan</a></mark> and won <mark class="hl">first place in McMaster's Computing and Software Technical Research Competition</mark>.
+      </p>
+
+      <p>
+        My broader research spans human and clinical AI collaboration, biomedical engineering, and neuroscience. I presented our paper on <mark class="hl"><a href="https://doi.org/10.1609/aaaiss.v6i1.36060" target="_blank" rel="noopener">human and clinical AI agent collaboration</a></mark>, trust calibration, and accountability at the <mark class="hl">AAAI Symposium Series in Dubai</mark>, and first-authored an <mark class="hl"><a href="https://pubmed.ncbi.nlm.nih.gov/35015648/" target="_blank" rel="noopener">IEEE Reviews in Biomedical Engineering Featured Article</a></mark> on hemodynamic modelling, medical imaging, and machine learning that is <mark class="hl">now past 100 citations</mark>. Before my PhD I completed a Master's in Biomedical Engineering at McMaster (<mark class="hl">ranked in the top 5% of students</mark>), a Master's in Neuroscience at Western University studying pupillometry and signal processing, an Honours BSc in Psychology at Western's Brain and Mind Institute, and certifications in Machine Learning (University of Oxford), High-Performance Computing (Compute Ontario), and University Teaching (Western University).
+      </p>
+
+      <p>
+        I have taught and developed curriculum across computer science, digital health, and cybersecurity at Mohawk College (where I served as <mark class="hl">Professor of Computer Science</mark> from 2022 to 2025), McMaster University, Western University, Fanshawe College, and the Vector Institute. My textbook <mark class="hl"><a href="https://campusebookstore.com/searchproduct/ebookdetail.aspx?ID=9740529" target="_blank" rel="noopener">Pearls and Perils of Machine Learning</a></mark> has been <mark class="hl">adopted in five academic courses</mark> I developed, including a current graduate course at McMaster.
+      </p>
+
+      <p>
+        Alongside academic research and teaching, I served as <mark class="hl">Head of AI at McMaster's <a href="https://vascularai.ca" target="_blank" rel="noopener">Translational Vascular AI Lab</a></mark> for five years, leading machine learning projects on brain blood flow and large-scale population cohorts, and as <mark class="hl">Co-Founder and Technical Lead at <a href="https://researchonline.ca" target="_blank" rel="noopener">Ro (Research Online)</a></mark>, an incubated health technology startup supported by <a href="https://innovationfactory.ca" target="_blank" rel="noopener">Hamilton's Innovation Factory</a> and The Clinic at McMaster. Across research and commercialization I have raised <mark class="hl">over $210,000 independently</mark>, including a <mark class="hl"><a href="https://healthinnovation.mcmaster.ca/residency-alumnus-awarded-90000-by-mitacs/" target="_blank" rel="noopener">$90,000 MITACS Accelerate Entrepreneur Award</a></mark>.
+      </p>
+    </div>
+
+    <!-- 1. Featured Media & Talks -->
     <section class="section" aria-labelledby="talks-heading">
-      <h2 id="talks-heading">Featured Video, Podcast &amp; Talks</h2>
+      <h2 id="talks-heading">Featured Media &amp; Talks</h2>
 
       <div class="media-list">
-        <!-- Video 1 (Featured) -->
         <article class="media-item">
           <a class="media-thumb" href="https://www.youtube.com/watch?v=Gi_ymHMMfyM" target="_blank" rel="noopener" aria-label="Watch AI in Healthcare Rounds with Mason Kadem on YouTube">
             <img src="https://i.ytimg.com/vi/Gi_ymHMMfyM/hqdefault.jpg" alt="AI in Healthcare Rounds with Mason Kadem" loading="lazy">
@@ -475,40 +573,22 @@
           </div>
         </article>
 
-        <!-- Video 2 -->
-        <article class="media-item">
-          <a class="media-thumb" href="https://www.youtube.com/watch?v=Y58PilxRoT0" target="_blank" rel="noopener" aria-label="Watch Residency at The Clinic with Mason Kadem on YouTube">
-            <img src="https://i.ytimg.com/vi/Y58PilxRoT0/hqdefault.jpg" alt="Residency at The Clinic with Mason Kadem" loading="lazy">
-            <span class="badge-overlay" aria-hidden="true">
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor">
-                <polygon points="3,1.5 10.5,6 3,10.5"></polygon>
-              </svg>
-            </span>
-          </a>
-          <div class="media-content">
-            <h3 class="media-title">
-              <a href="https://www.youtube.com/watch?v=Y58PilxRoT0" target="_blank" rel="noopener">Residency at The Clinic with Mason Kadem</a>
-            </h3>
-            <p class="media-sub">Enabling large-scale remote physiological research online with Ro · McMaster Innovation Hub</p>
-          </div>
-        </article>
 
-        <!-- Podcast -->
         <article class="media-item">
           <div class="media-thumb podcast-thumb" aria-hidden="true">
             <svg width="124" height="52" viewBox="0 0 124 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="8" y="20" width="4" height="12" rx="2" fill="#94a3b8"/>
-              <rect x="18" y="13" width="4" height="26" rx="2" fill="#64748b"/>
-              <rect x="28" y="17" width="4" height="18" rx="2" fill="#94a3b8"/>
-              <rect x="38" y="9" width="4" height="34" rx="2" fill="#1772d0"/>
-              <rect x="55" y="10" width="14" height="22" rx="7" stroke="#1772d0" stroke-width="2.2" fill="#ffffff"/>
-              <path d="M50 25C50 31.6274 55.3726 37 62 37C68.6274 37 74 31.6274 74 25" stroke="#1772d0" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="62" y1="37" x2="62" y2="43" stroke="#1772d0" stroke-width="2.2" stroke-linecap="round"/>
-              <line x1="56" y1="43" x2="68" y2="43" stroke="#1772d0" stroke-width="2.2" stroke-linecap="round"/>
-              <rect x="82" y="11" width="4" height="30" rx="2" fill="#1772d0"/>
-              <rect x="92" y="18" width="4" height="16" rx="2" fill="#94a3b8"/>
-              <rect x="102" y="14" width="4" height="24" rx="2" fill="#64748b"/>
-              <rect x="112" y="21" width="4" height="10" rx="2" fill="#94a3b8"/>
+              <rect x="8" y="20" width="4" height="12" rx="2" fill="#9a9386"/>
+              <rect x="18" y="13" width="4" height="26" rx="2" fill="#6c675d"/>
+              <rect x="28" y="17" width="4" height="18" rx="2" fill="#9a9386"/>
+              <rect x="38" y="9" width="4" height="34" rx="2" fill="#9e3b24"/>
+              <rect x="55" y="10" width="14" height="22" rx="7" stroke="#9e3b24" stroke-width="2.2" fill="#ffffff"/>
+              <path d="M50 25C50 31.6274 55.3726 37 62 37C68.6274 37 74 31.6274 74 25" stroke="#9e3b24" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="62" y1="37" x2="62" y2="43" stroke="#9e3b24" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="56" y1="43" x2="68" y2="43" stroke="#9e3b24" stroke-width="2.2" stroke-linecap="round"/>
+              <rect x="82" y="11" width="4" height="30" rx="2" fill="#9e3b24"/>
+              <rect x="92" y="18" width="4" height="16" rx="2" fill="#9a9386"/>
+              <rect x="102" y="14" width="4" height="24" rx="2" fill="#6c675d"/>
+              <rect x="112" y="21" width="4" height="10" rx="2" fill="#9a9386"/>
             </svg>
             <span class="badge-overlay">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
@@ -520,39 +600,37 @@
           </div>
           <div class="media-content">
             <h3 class="media-title">NSERC CREATE sMAP Podcast · Host</h3>
-            <p class="media-sub">Host of McMaster University's Rethinking Mobility in Aging podcast series (Apple Podcasts), interviewing faculty and graduate researchers on aging, mobility, and human-centered technology.</p>
+            <p class="media-sub">Host of McMaster University's Rethinking Mobility in Aging podcast series on Apple Podcasts, interviewing faculty and graduate researchers on aging, mobility, and human-centered technology</p>
           </div>
         </article>
       </div>
 
       <ul class="compact-list">
-        <li><span class="year-tag">2026</span> · <mark>1st Place</mark>, Computing and Software Technical Research Competition, McMaster University</li>
-        <li><span class="year-tag">2026</span> · <mark>People's Choice Award</mark>, NSERC CREATE sMAP Symposium, McMaster University</li>
-        <li><span class="year-tag">2025</span> · <mark>1st Place Technical Award</mark>, IEEE Artificial Intelligence of Things (AIoT), Osaka, Japan</li>
+        <li><span class="year-tag">2026</span> · <mark class="hl">1st Place</mark>, Computing and Software Technical Research Competition, McMaster University</li>
+        <li><span class="year-tag">2026</span> · <mark class="hl">People's Choice Award</mark>, NSERC CREATE sMAP Symposium, McMaster University</li>
+        <li><span class="year-tag">2025</span> · <mark class="hl">1st Place Technical Award</mark>, IEEE Artificial Intelligence of Things (AIoT), Osaka, Japan</li>
         <li><span class="year-tag">2025</span> · AAAI Symposium Series Presentation, Dubai, UAE</li>
         <li><span class="year-tag">2023</span> · AAAI Symposium Series Presentation, Singapore</li>
       </ul>
     </section>
 
-    <!-- 2. Selected Research -->
+    <!-- 2. Selected Publications -->
     <section class="section" aria-labelledby="research-heading">
-      <h2 id="research-heading">Selected Research</h2>
+      <h2 id="research-heading">Selected Publications</h2>
 
       <ul class="pub-list">
         <li>
           <span class="pub-title">Self-Sizing Attention for Recovering Known Circuits</span>
-          · <span class="pub-venue">Coming soon</span>
+          · <span class="pub-badge">Coming Soon</span>
         </li>
         <li>
           <span class="pub-title">Cross-Site Transformer Auditing and Multi-Site Signal Fusion</span>
-          · <span class="pub-venue">Coming soon</span>
-          · <span class="pub-note">Outperforms previous best by 20%, <mark>People's Choice Award</mark> at NSERC CREATE sMAP, <mark>United States provisional patent</mark> filed through the McMaster Industry Liaison Office</span>
+          · <span class="pub-badge">Coming Soon</span> · <span class="pub-venue">U.S. Provisional Patent Filed</span>
         </li>
         <li>
           <span class="pub-title">Controlling Transformer Internals through Attention Head Intervention</span>
           (<a href="https://arxiv.org/abs/2601.04398" target="_blank" rel="noopener">arXiv</a> / <a href="https://arxiv.org/pdf/2601.04398" target="_blank" rel="noopener">PDF</a>)
           · <span class="pub-venue">2026</span>
-          · <span class="pub-note">Picked up and discussed in several technical blogs on interpretability</span>
         </li>
         <li>
           <span class="pub-title">Ambient and Wearable Sensing in Dementia Care</span>
@@ -562,7 +640,6 @@
           <span class="pub-title">Towards Clinically Interpretable Sleep Staging</span>
           (<a href="http://www.ieee-aiot.org/2025/accepted-papers.php" target="_blank" rel="noopener">Accepted Papers</a>)
           · <span class="pub-venue">IEEE AIoT 2025, Osaka, Japan</span>
-          · <mark>1st Place Technical Award</mark>
         </li>
         <li>
           <span class="pub-title">Human-Clinical AI Agent Collaboration</span>
@@ -576,8 +653,7 @@
         <li>
           <span class="pub-title">Hemodynamic Modeling, Medical Imaging, and Machine Learning and Their Applications to Cardiovascular Interventions</span>
           (<a href="https://pubmed.ncbi.nlm.nih.gov/35015648/" target="_blank" rel="noopener">PubMed</a>)
-          · <span class="pub-venue">IEEE Reviews in Biomedical Engineering, 2023</span>
-          · <mark>Featured Article, 100+ citations</mark>
+          · <span class="pub-venue">IEEE Reviews in Biomedical Engineering, 2023</span> · <span class="pub-badge">Featured Article · 100+ Citations</span>
         </li>
         <li>
           <span class="pub-title">Pupil Size Tracks Semantic Ambiguity as Well as Noise</span>
@@ -586,16 +662,26 @@
       </ul>
     </section>
 
-    <!-- 3. Teaching & Book -->
+    <!-- 3. Textbook & Teaching -->
     <section class="section" aria-labelledby="teaching-heading">
-      <h2 id="teaching-heading">Teaching &amp; Book</h2>
+      <h2 id="teaching-heading">Textbook &amp; Teaching</h2>
 
-      <p class="teaching-copy">
-        I have taught and developed curriculum across computer science, digital health, and cybersecurity at Mohawk, McMaster, Western, Fanshawe, and the Vector Institute. My textbook <a href="https://campusebookstore.com/searchproduct/ebookdetail.aspx?ID=9740529" target="_blank" rel="noopener">Pearls and Perils of Machine Learning</a> has been adopted in five courses I developed, including a current graduate course at McMaster, and was recognized on <a href="https://www.mohawknewsdesk.ca/mohawk-college-celebrates-authors-in-its-midst-on-national-authors-day/" target="_blank" rel="noopener">Mohawk College National Authors Day</a>.
-      </p>
+      <article class="book-card">
+        <p class="book-kicker">Published Textbook · Adopted in 5 Academic Courses</p>
+        <h3 class="book-title">
+          <a href="https://campusebookstore.com/searchproduct/ebookdetail.aspx?ID=9740529" target="_blank" rel="noopener">Pearls and Perils of Machine Learning</a>
+        </h3>
+        <p class="book-desc">
+          Adopted across five courses developed by Mason Kadem, including a current graduate course at McMaster University, and recognized on Mohawk College National Authors Day.
+        </p>
+        <div class="book-actions">
+          <a href="https://campusebookstore.com/searchproduct/ebookdetail.aspx?ID=9740529" target="_blank" rel="noopener">View Textbook on Campus eBookstore</a>
+          <a href="https://www.mohawknewsdesk.ca/mohawk-college-celebrates-authors-in-its-midst-on-national-authors-day/" target="_blank" rel="noopener">Mohawk National Authors Day Feature</a>
+        </div>
+      </article>
 
       <details class="course-details">
-        <summary>View all 20 courses taught across McMaster, Mohawk, Western, Fanshawe &amp; Vector Institute</summary>
+        <summary>View all 20 courses taught across McMaster, Mohawk, Western, Fanshawe, Vector Institute &amp; STEM Canada</summary>
         <ul class="course-grid">
           <li><span class="course-code">KINESIOL 731</span> · Supervised Machine Learning for the Physiologist <span class="course-inst">(McMaster)</span></li>
           <li><span class="course-code">MECHENG 4BF3</span> · Biofluid Mechanics Systems <span class="course-inst">(McMaster)</span></li>
@@ -627,10 +713,10 @@
 
       <ul class="edu-list">
         <li>
-          <span class="edu-degree">PhD in Computer Science</span> (AI specialization), McMaster University · <mark>CIHR Doctoral Scholarship ($120,000)</mark>, <mark>Vanier Canada Graduate Scholarship Nominee</mark>
+          <span class="edu-degree">PhD in Computer Science</span> (AI specialization), McMaster University · <mark class="hl">CIHR Doctoral Scholarship ($120,000)</mark>, <mark class="hl">Vanier Canada Graduate Scholarship Nominee</mark>
         </li>
         <li>
-          <span class="edu-degree">MASc in Biomedical Engineering</span>, McMaster University · <mark>Ranked in the top 5% of students</mark>
+          <span class="edu-degree">MASc in Biomedical Engineering</span>, McMaster University · <mark class="hl">Ranked in the top 5% of students</mark>
         </li>
         <li>
           <span class="edu-degree">MSc in Neuroscience</span>, Schulich School of Medicine and Dentistry, Western University
@@ -645,7 +731,13 @@
     </section>
 
     <footer>
-      Mason Kadem · Dundas, Ontario
+      <span>Mason Kadem · Dundas, Ontario</span>
+      <span>
+        <a href="https://campusebookstore.com/searchproduct/ebookdetail.aspx?ID=9740529" target="_blank" rel="noopener">Textbook</a> ·
+        <a href="https://scholar.google.com/citations?user=DFb3ztIAAAAJ" target="_blank" rel="noopener">Scholar</a> ·
+        <a href="https://github.com/masonkadem" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/mkadem" target="_blank" rel="noopener">LinkedIn</a>
+      </span>
     </footer>
 
   </main>
