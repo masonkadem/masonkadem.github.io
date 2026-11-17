@@ -1,1794 +1,653 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mason Kadem · AI Researcher · CS PhD Scholar · Founder · Educator &amp; Author</title>
-  <meta name="description" content="Mason Kadem · AI Researcher, CS PhD Scholar at McMaster University, Founder at Ro Research Online, Educator, and Author bridging mechanistic interpretability, biomedical signal ML, and human and AI safety." />
-
-  <!-- Typography Google Fonts Newsreader, Inter, and JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
-
-  <!-- Zero FOUC Theme Initialization -->
-  <script>
-    (function () {
-      try {
-        var stored = localStorage.getItem('mk-portfolio-theme');
-        var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (!stored && systemDark)) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      } catch (e) {
-        /* Fallback safely in restricted storage contexts */
-      }
-    })();
-  </script>
-
-  <!-- Tailwind CSS with Warm Editorial Design Tokens -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            ivory: {
-              bg: '#fbfaf7',
-              surface: '#f3f0e8',
-              card: '#ffffff',
-              text: '#1c1b18',
-              muted: '#57534a',
-              faint: '#7b766b',
-              accent: '#9e3b24',
-              border: '#e4dfd4'
-            },
-            obsidian: {
-              bg: '#141413',
-              surface: '#1e1e1c',
-              card: '#1a1a18',
-              text: '#edeae2',
-              muted: '#b0aba0',
-              faint: '#847f74',
-              accent: '#e07a5f',
-              border: '#2c2b28'
-            }
-          },
-          fontFamily: {
-            serif: ['Newsreader', 'Georgia', 'Cambria', 'serif'],
-            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace']
-          }
-        }
-      }
-    };
-  </script>
-
-  <!-- Custom Hairline, Spotlight Animation, Reduced Motion, and Print Styles -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mason Kadem · McMaster University</title>
+  <meta name="description" content="Mason Kadem · PhD Candidate in Computer Science at McMaster University and CIHR Doctoral Scholar">
   <style>
-    :root {
-      --progress-width: 0%;
+    /* Base Reset & Typography */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
     }
 
     body {
-      background-color: #fbfaf7;
-      color: #1c1b18;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      color: #222222;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 15.5px;
+      line-height: 1.62;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    html.dark body {
-      background-color: #141413;
-      color: #edeae2;
+    /* Main Centered Single Column */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 22px 64px;
     }
 
-    #readingProgress {
-      width: var(--progress-width);
-      transition: width 80ms linear;
+    /* Academic Links */
+    a {
+      color: #1772d0;
+      text-decoration: none;
+      transition: color 0.14s ease;
     }
 
-    @keyframes spotlightPulseLight {
-      0% { background-color: rgba(158, 59, 36, 0.16); border-color: #9e3b24; }
-      100% { background-color: transparent; }
-    }
-    @keyframes spotlightPulseDark {
-      0% { background-color: rgba(224, 122, 95, 0.22); border-color: #e07a5f; }
-      100% { background-color: transparent; }
-    }
-    .spotlight-flash {
-      animation: spotlightPulseLight 1.8s ease-out;
-    }
-    html.dark .spotlight-flash {
-      animation: spotlightPulseDark 1.8s ease-out;
+    a:hover,
+    a:focus-visible {
+      color: #f09228;
+      text-decoration: underline;
     }
 
-    .spy-link.active {
-      color: #9e3b24;
-      background-color: rgba(158, 59, 36, 0.09);
+    /* Subtle Achievement Highlights */
+    mark {
+      background: #fff3bf;
+      color: inherit;
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+
+    /* Top Bio Header */
+    .bio-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+
+    .avatar-wrap {
+      flex: 0 0 150px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      background-color: #f6f8fa;
+      margin-top: 4px;
+    }
+
+    .avatar-wrap img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .bio-body {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .bio-body h1 {
+      margin: 0 0 4px;
+      font-size: 30px;
       font-weight: 600;
-    }
-    .spy-link.active .spy-bar {
-      opacity: 1;
-      transform: scaleY(1);
-    }
-    html.dark .spy-link.active {
-      color: #e07a5f;
-      background-color: rgba(224, 122, 95, 0.14);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: #111111;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto !important;
-      }
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+    .bio-subtitle {
+      margin: 0 0 14px;
+      font-size: 14.5px;
+      color: #555555;
+      font-weight: 500;
     }
 
-    @media print {
-      body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        font-size: 10.5pt !important;
-        line-height: 1.45 !important;
+    .bio-body p {
+      margin: 0 0 12px;
+    }
+
+    .bio-links {
+      margin-top: 14px;
+      font-size: 14.5px;
+      color: #888888;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bio-links .sep {
+      color: #bbbbbb;
+      user-select: none;
+    }
+
+    /* Section Structure */
+    .section {
+      padding-top: 26px;
+      margin-top: 26px;
+      border-top: 1px solid #eeeeee;
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #111111;
+    }
+
+    /* Media Cards (Karpathy-style Left Thumbnail + Right Description) */
+    .media-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .media-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .media-thumb {
+      position: relative;
+      flex: 0 0 180px;
+      width: 180px;
+      height: 102px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      background-color: #f3f4f6;
+      display: block;
+    }
+
+    .media-thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+    }
+
+    a.media-thumb:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Subtle Play Badge Overlay */
+    .badge-overlay {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(17, 17, 17, 0.78);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    /* Podcast SVG Thumbnail Box */
+    .podcast-thumb {
+      background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .media-content {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .media-title {
+      font-size: 15.5px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin: 0 0 4px;
+      color: #222222;
+    }
+
+    .media-sub {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #555555;
+    }
+
+    /* Compact Competition & Conference List */
+    .compact-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .compact-list li {
+      font-size: 14.5px;
+      color: #333333;
+      line-height: 1.5;
+    }
+
+    .year-tag {
+      display: inline-block;
+      min-width: 38px;
+      font-variant-numeric: tabular-nums;
+      color: #666666;
+      font-weight: 500;
+    }
+
+    /* Selected Research List */
+    .pub-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pub-list li {
+      line-height: 1.55;
+      color: #222222;
+    }
+
+    .pub-title {
+      font-weight: 600;
+      color: #111111;
+    }
+
+    .pub-venue {
+      font-style: italic;
+      color: #555555;
+    }
+
+    .pub-note {
+      color: #444444;
+    }
+
+    /* Native Accordion for 20 Courses */
+    .teaching-copy {
+      margin: 0 0 14px;
+    }
+
+    details.course-details {
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      background-color: #fafafa;
+      padding: 10px 14px;
+    }
+
+    details.course-details summary {
+      cursor: pointer;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: #1772d0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+    }
+
+    details.course-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.course-details summary::before {
+      content: "▸";
+      display: inline-block;
+      font-size: 13px;
+      color: #555555;
+      transition: transform 0.15s ease;
+    }
+
+    details.course-details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.course-details summary:hover {
+      color: #f09228;
+    }
+
+    .course-grid {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e5e7eb;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 18px;
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 2px;
+    }
+
+    .course-grid li {
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: #333333;
+    }
+
+    .course-code {
+      font-weight: 600;
+      color: #111111;
+    }
+
+    .course-inst {
+      color: #666666;
+      font-size: 12.5px;
+    }
+
+    /* Education List */
+    .edu-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .edu-list li {
+      line-height: 1.55;
+      color: #333333;
+    }
+
+    .edu-degree {
+      font-weight: 600;
+      color: #111111;
+    }
+
+    /* Minimal Footer */
+    footer {
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid #eeeeee;
+      font-size: 13.5px;
+      color: #777777;
+      text-align: center;
+    }
+
+    /* Responsive Mobile Layout */
+    @media (max-width: 640px) {
+      .container {
+        padding: 32px 18px 48px;
       }
-      .no-print,
-      #readingProgressWrap,
-      #cmdModal,
-      #toastContainer,
-      #sidebarNav,
-      #sidebarControls {
-        display: none !important;
+
+      .bio-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+        gap: 18px;
       }
-      .layout-shell {
-        display: block !important;
-        max-width: 100% !important;
-        padding: 0 !important;
+
+      .bio-body h1,
+      .bio-subtitle {
+        text-align: center;
       }
-      aside.profile-rail {
-        position: static !important;
-        width: 100% !important;
-        border-bottom: 1px solid #cccccc !important;
-        padding-bottom: 12pt !important;
-        margin-bottom: 16pt !important;
+
+      .bio-links {
+        justify-content: center;
       }
-      aside.profile-rail img {
-        width: 72pt !important;
-        height: 84pt !important;
+
+      .media-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
-      .quicktake-drawer {
-        display: block !important;
+
+      .media-thumb {
+        width: 100%;
+        max-width: 300px;
+        height: 168px;
+        flex: 0 0 auto;
       }
-      article, .course-item, .print-avoid-break {
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-      a {
-        text-decoration: none !important;
-        color: #000000 !important;
+
+      .course-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
+<body>
+  <main class="container">
 
-<body class="bg-ivory-bg text-ivory-text dark:bg-obsidian-bg dark:text-obsidian-text font-sans text-[15.5px] leading-[1.68] selection:bg-ivory-accent/15 dark:selection:bg-obsidian-accent/25 transition-colors duration-200">
-
-  <!-- Skip Link for Accessibility -->
-  <a href="#mainContent" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:rounded-lg focus:bg-ivory-accent dark:focus:bg-obsidian-accent focus:text-white dark:focus:text-obsidian-bg font-mono text-xs">
-    Skip to main content
-  </a>
-
-  <!-- Top Reading Progress Bar -->
-  <div id="readingProgressWrap" aria-hidden="true" class="fixed top-0 left-0 right-0 h-[2.5px] z-40 bg-transparent pointer-events-none">
-    <div id="readingProgress" class="h-full bg-ivory-accent dark:bg-obsidian-accent"></div>
-  </div>
-
-  <!-- Two Column Shell 280px Sticky Left Sidebar + 760px Editorial Main Stream -->
-  <div class="layout-shell max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-20 lg:py-12 flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12">
-
-    <!-- LEFT STICKY PROFILE SIDEBAR -->
-    <aside aria-label="Profile and section navigation" class="profile-rail w-full lg:w-[280px] lg:shrink-0 lg:sticky lg:top-10 flex flex-col gap-5 pb-6 lg:pb-0 border-b lg:border-b-0 border-ivory-border dark:border-obsidian-border">
-
-      <!-- Portrait Photo and Identity -->
-      <div class="flex flex-row lg:flex-col items-center lg:items-start gap-4">
-        <div class="relative w-24 h-28 sm:w-28 sm:h-32 lg:w-[172px] lg:h-[204px] shrink-0 rounded-xl overflow-hidden border border-ivory-border dark:border-obsidian-border bg-ivory-surface dark:bg-obsidian-surface shadow-sm">
-          <img
-            src="masonpic_rectcrop.jpg"
-            alt="Mason Kadem"
-            loading="eager"
-            decoding="async"
-            onerror="this.onerror=null;this.src='https://placehold.co/344x408/f3f0e8/9e3b24?text=MK';"
-            class="w-full h-full object-cover object-top"
-          />
-        </div>
-
-        <div class="min-w-0 flex-1">
-          <h1 class="font-serif text-[1.65rem] sm:text-[1.85rem] lg:text-[1.78rem] font-semibold leading-[1.15] tracking-tight text-ivory-text dark:text-obsidian-text">
-            Mason Kadem
-          </h1>
-          <p class="font-mono text-[0.76rem] font-medium leading-relaxed text-ivory-accent dark:text-obsidian-accent mt-1.5">
-            AI Researcher · CS PhD Scholar · Founder · Educator &amp; Author
-          </p>
-          <p class="text-[0.82rem] text-ivory-faint dark:text-obsidian-faint mt-1 flex items-center gap-1.5">
-            <span aria-hidden="true">⌖</span> Dundas / Hamilton, ON
-          </p>
-
-          <!-- Mobile Quick Controls -->
-          <div class="flex lg:hidden flex-wrap items-center gap-2 mt-3 no-print">
-            <button
-              type="button"
-              data-open-cmd
-              class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg font-mono text-[0.74rem] bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-muted dark:text-obsidian-muted hover:border-ivory-accent dark:hover:border-obsidian-accent transition-colors cursor-pointer"
-            >
-              <span>⌕ Quick Jump</span>
-              <kbd class="px-1.5 py-0.5 text-[0.68rem] rounded bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border">/</kbd>
-            </button>
-            <button
-              type="button"
-              data-toggle-theme
-              aria-label="Toggle color theme"
-              class="inline-flex items-center px-2.5 py-1.5 rounded-lg font-mono text-[0.74rem] bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-muted dark:text-obsidian-muted hover:text-ivory-text dark:hover:text-obsidian-text transition-colors cursor-pointer"
-            >
-              <span class="theme-label">☾ Dark</span>
-            </button>
-          </div>
-        </div>
+    <!-- Top Bio Header -->
+    <header class="bio-header">
+      <div class="avatar-wrap">
+        <img src="masonpic_rectcrop.jpg" alt="Mason Kadem" width="150" height="150">
       </div>
 
-      <!-- Contact and Profile Pills -->
-      <div class="flex flex-wrap gap-1.5 font-mono text-[0.74rem]">
-        <button
-          id="copyEmailBtn"
-          type="button"
-          title="Copy mason.kadem@gmail.com"
-          class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-text dark:text-obsidian-text hover:border-ivory-accent dark:hover:border-obsidian-accent hover:text-ivory-accent dark:hover:text-obsidian-accent transition-colors cursor-pointer"
-        >
-          <span aria-hidden="true">✉</span>
-          <span id="copyEmailLabel">Copy Email</span>
-        </button>
+      <div class="bio-body">
+        <h1>Mason Kadem</h1>
+        <p class="bio-subtitle">PhD Candidate in Computer Science, McMaster University · CIHR Doctoral Scholar</p>
 
-        <a href="https://scholar.google.com/citations?user=DFb3ztIAAAAJ" target="_blank" rel="noopener" class="inline-flex items-center px-2.5 py-1.5 rounded-lg bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-muted dark:text-obsidian-muted hover:border-ivory-accent dark:hover:border-obsidian-accent hover:text-ivory-accent dark:hover:text-obsidian-accent transition-colors">
-          Google Scholar ↗
-        </a>
-
-        <a href="https://github.com/masonkadem" target="_blank" rel="noopener" class="inline-flex items-center px-2.5 py-1.5 rounded-lg bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-muted dark:text-obsidian-muted hover:border-ivory-accent dark:hover:border-obsidian-accent hover:text-ivory-accent dark:hover:text-obsidian-accent transition-colors">
-          GitHub ↗
-        </a>
-
-        <a href="https://www.linkedin.com/in/mkadem" target="_blank" rel="noopener" class="inline-flex items-center px-2.5 py-1.5 rounded-lg bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-muted dark:text-obsidian-muted hover:border-ivory-accent dark:hover:border-obsidian-accent hover:text-ivory-accent dark:hover:text-obsidian-accent transition-colors">
-          LinkedIn ↗
-        </a>
-
-        <a href="https://campusebookstore.com/searchproduct/ebookdetail.aspx?ID=9740529" target="_blank" rel="noopener" class="inline-flex items-center px-2.5 py-1.5 rounded-lg bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-muted dark:text-obsidian-muted hover:border-ivory-accent dark:hover:border-obsidian-accent hover:text-ivory-accent dark:hover:text-obsidian-accent transition-colors">
-          Textbook ↗
-        </a>
-
-        <a href="cv.pdf" target="_blank" rel="noopener" class="inline-flex items-center px-2.5 py-1.5 rounded-lg bg-ivory-accent/10 dark:bg-obsidian-accent/15 border border-ivory-accent/30 dark:border-obsidian-accent/30 text-ivory-accent dark:text-obsidian-accent font-medium hover:opacity-85 transition-opacity">
-          CV PDF
-        </a>
-      </div>
-
-      <!-- Live Scroll Spy Navigation -->
-      <nav id="sidebarNav" aria-label="Section navigation" class="no-print">
-        <div class="hidden lg:block font-mono text-[0.69rem] uppercase tracking-widest text-ivory-faint dark:text-obsidian-faint mb-2 px-2">
-          Sections
-        </div>
-        <ul class="flex lg:flex-col gap-1 overflow-x-auto pb-1 lg:pb-0 text-[0.85rem]">
-          <li>
-            <a href="#overview" data-spy="overview" class="spy-link active group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-ivory-muted dark:text-obsidian-muted hover:text-ivory-text dark:hover:text-obsidian-text transition-colors whitespace-nowrap">
-              <span class="spy-bar hidden lg:block absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-r bg-ivory-accent dark:bg-obsidian-accent opacity-0 scale-y-50 transition-all"></span>
-              <span>Overview</span>
-              <span class="hidden lg:inline font-mono text-[0.7rem] text-ivory-faint dark:text-obsidian-faint">01</span>
-            </a>
-          </li>
-          <li>
-            <a href="#research" data-spy="research" class="spy-link group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-ivory-muted dark:text-obsidian-muted hover:text-ivory-text dark:hover:text-obsidian-text transition-colors whitespace-nowrap">
-              <span class="spy-bar hidden lg:block absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-r bg-ivory-accent dark:bg-obsidian-accent opacity-0 scale-y-50 transition-all"></span>
-              <span>Research</span>
-              <span class="hidden lg:inline font-mono text-[0.7rem] text-ivory-faint dark:text-obsidian-faint">02</span>
-            </a>
-          </li>
-          <li>
-            <a href="#teaching" data-spy="teaching" class="spy-link group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-ivory-muted dark:text-obsidian-muted hover:text-ivory-text dark:hover:text-obsidian-text transition-colors whitespace-nowrap">
-              <span class="spy-bar hidden lg:block absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-r bg-ivory-accent dark:bg-obsidian-accent opacity-0 scale-y-50 transition-all"></span>
-              <span>Courses &amp; Book</span>
-              <span class="hidden lg:inline font-mono text-[0.7rem] text-ivory-faint dark:text-obsidian-faint">03</span>
-            </a>
-          </li>
-          <li>
-            <a href="#ventures" data-spy="ventures" class="spy-link group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-ivory-muted dark:text-obsidian-muted hover:text-ivory-text dark:hover:text-obsidian-text transition-colors whitespace-nowrap">
-              <span class="spy-bar hidden lg:block absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-r bg-ivory-accent dark:bg-obsidian-accent opacity-0 scale-y-50 transition-all"></span>
-              <span>Leadership &amp; Ventures</span>
-              <span class="hidden lg:inline font-mono text-[0.7rem] text-ivory-faint dark:text-obsidian-faint">04</span>
-            </a>
-          </li>
-          <li>
-            <a href="#talks" data-spy="talks" class="spy-link group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-ivory-muted dark:text-obsidian-muted hover:text-ivory-text dark:hover:text-obsidian-text transition-colors whitespace-nowrap">
-              <span class="spy-bar hidden lg:block absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-r bg-ivory-accent dark:bg-obsidian-accent opacity-0 scale-y-50 transition-all"></span>
-              <span>Talks &amp; Honours</span>
-              <span class="hidden lg:inline font-mono text-[0.7rem] text-ivory-faint dark:text-obsidian-faint">05</span>
-            </a>
-          </li>
-          <li>
-            <a href="#credentials" data-spy="credentials" class="spy-link group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-ivory-muted dark:text-obsidian-muted hover:text-ivory-text dark:hover:text-obsidian-text transition-colors whitespace-nowrap">
-              <span class="spy-bar hidden lg:block absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-r bg-ivory-accent dark:bg-obsidian-accent opacity-0 scale-y-50 transition-all"></span>
-              <span>Credentials</span>
-              <span class="hidden lg:inline font-mono text-[0.7rem] text-ivory-faint dark:text-obsidian-faint">06</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- Desktop Rail Footer Controls -->
-      <div id="sidebarControls" class="hidden lg:flex flex-col gap-2.5 pt-3 border-t border-ivory-border dark:border-obsidian-border no-print">
-        <button
-          type="button"
-          data-open-cmd
-          class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-[0.79rem] text-ivory-muted dark:text-obsidian-muted hover:border-ivory-accent dark:hover:border-obsidian-accent hover:text-ivory-text dark:hover:text-obsidian-text transition-colors cursor-pointer"
-        >
-          <span class="flex items-center gap-2 font-mono">
-            <span aria-hidden="true">⌕</span> Quick Jump Palette
-          </span>
-          <span class="flex items-center gap-1 font-mono text-[0.68rem] text-ivory-faint dark:text-obsidian-faint">
-            <kbd class="px-1.5 py-0.5 rounded bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border">Cmd K</kbd>
-            <kbd class="px-1.5 py-0.5 rounded bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border">/</kbd>
-          </span>
-        </button>
-
-        <div class="flex items-center justify-between px-1">
-          <span class="font-mono text-[0.72rem] text-ivory-faint dark:text-obsidian-faint">Theme</span>
-          <button
-            type="button"
-            data-toggle-theme
-            aria-label="Toggle dark and light mode"
-            class="font-mono text-[0.74rem] px-2.5 py-1 rounded-lg bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-muted dark:text-obsidian-muted hover:text-ivory-text dark:hover:text-obsidian-text transition-colors cursor-pointer"
-          >
-            <span class="theme-label">☾ Dark</span>
-          </button>
-        </div>
-      </div>
-    </aside>
-
-    <!-- RIGHT MAIN EDITORIAL STREAM -->
-    <main id="mainContent" class="w-full max-w-[760px] min-w-0 space-y-14">
-
-      <!-- SECTION 01 · OVERVIEW & QUICK ORIENTATION -->
-      <section id="overview" data-section="overview" aria-labelledby="overview-heading" class="scroll-mt-10">
-        <div class="font-mono text-[0.72rem] uppercase tracking-widest text-ivory-accent dark:text-obsidian-accent font-semibold mb-2">
-          01 · Overview
-        </div>
-        <h2 id="overview-heading" class="font-serif text-[1.75rem] sm:text-[2.05rem] font-semibold leading-[1.22] tracking-tight text-ivory-text dark:text-obsidian-text mb-4">
-          Opening the black box across artificial neural networks, biological brains, and real-world human systems.
-        </h2>
-
-        <div class="space-y-4 text-ivory-text dark:text-obsidian-text">
-          <p>
-            Hi, I am Mason Kadem. My work connects <strong>artificial intelligence, systems neuroscience, biomedical engineering, entrepreneurship, and post-secondary education</strong>. Because I trained on biological brains and physical physiological systems before focusing on deep learning architectures, I approach modern neural networks as empirical organisms. The same questions neuroscientists ask about brain regions, such as what each component computes, how signals route across sites, and which pathways compensate or inhibit others under perturbation, now guide how I study transformers and foundation models.
-          </p>
-          <p>
-            That lens shapes everything I build and teach. Whether I am isolating internal circuits in language and physiological models, leading research platforms that capture clinical data at scale, or helping students see past black-box hype in the classroom, my aim is to build systems whose reasoning can be inspected, audited for brittle shortcuts, and trusted responsibly by humans.
-          </p>
-        </div>
-
-        <!-- Four Pillar Snapshot Grid (2x2) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-7" aria-label="Core areas of work">
-          <div class="rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border p-4">
-            <div class="font-mono text-[0.72rem] uppercase tracking-wider text-ivory-accent dark:text-obsidian-accent font-semibold mb-1">
-              01 · AI Internals &amp; Safety
-            </div>
-            <p class="text-[0.89rem] leading-[1.55] text-ivory-muted dark:text-obsidian-muted">
-              Mechanistic interpretability, attention circuits, shortcut auditing, and human and AI trust calibration.
-            </p>
-          </div>
-
-          <div class="rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border p-4">
-            <div class="font-mono text-[0.72rem] uppercase tracking-wider text-ivory-accent dark:text-obsidian-accent font-semibold mb-1">
-              02 · Brain &amp; Physiology
-            </div>
-            <p class="text-[0.89rem] leading-[1.55] text-ivory-muted dark:text-obsidian-muted">
-              Neuroscience and biomedical engineering training across cerebrovascular dynamics, medical imaging, and multi-site wearables.
-            </p>
-          </div>
-
-          <div class="rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border p-4">
-            <div class="font-mono text-[0.72rem] uppercase tracking-wider text-ivory-accent dark:text-obsidian-accent font-semibold mb-1">
-              03 · Ventures &amp; Translation
-            </div>
-            <p class="text-[0.89rem] leading-[1.55] text-ivory-muted dark:text-obsidian-muted">
-              Founder of Ro Research Online, five years as Head of AI at Vascular AI, U.S. provisional patent, and over $210,000 in competitive funding.
-            </p>
-          </div>
-
-          <div class="rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border p-4">
-            <div class="font-mono text-[0.72rem] uppercase tracking-wider text-ivory-accent dark:text-obsidian-accent font-semibold mb-1">
-              04 · Pedagogy &amp; Authorship
-            </div>
-            <p class="text-[0.89rem] leading-[1.55] text-ivory-muted dark:text-obsidian-muted">
-              20 courses taught across six institutions and author of <em>Pearls and Perils of Machine Learning</em>.
-            </p>
-          </div>
-        </div>
-
-        <!-- Quick Orientation Callout Box -->
-        <div class="rounded-r-xl bg-ivory-surface dark:bg-obsidian-surface border-l-[3px] border-ivory-accent dark:border-obsidian-accent px-5 py-4 no-print">
-          <div class="font-mono text-[0.75rem] uppercase tracking-wider text-ivory-accent dark:text-obsidian-accent font-semibold mb-2.5">
-            Quick Orientation · Jump Directly To What You Need
-          </div>
-          <ul class="space-y-2 text-[0.91rem] text-ivory-text dark:text-obsidian-text">
-            <li>
-              <span class="font-mono text-ivory-accent dark:text-obsidian-accent mr-1.5">→</span>
-              <strong>Transformer Circuits &amp; Head Pruning</strong> · Explore <a href="#paper-self-sizing" data-jump="paper-self-sizing" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">Self-Sizing Attention for Recovering Known Circuits</a> and <a href="#paper-head-intervention" data-jump="paper-head-intervention" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">Attention Head Intervention on arXiv</a>.
-            </li>
-            <li>
-              <span class="font-mono text-ivory-accent dark:text-obsidian-accent mr-1.5">→</span>
-              <strong>Human Reliance &amp; AI Accountability</strong> · Read <a href="#paper-aaai-trust" data-jump="paper-aaai-trust" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">Human and Clinical AI Agent Collaboration</a> from AAAI in Dubai.
-            </li>
-            <li>
-              <span class="font-mono text-ivory-accent dark:text-obsidian-accent mr-1.5">→</span>
-              <strong>Biomedical Signal Fusion &amp; Synthesis</strong> · Inspect <a href="#paper-cross-site" data-jump="paper-cross-site" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">Cross-Site Transformer Auditing</a> and the <a href="#paper-ieee-rbme" data-jump="paper-ieee-rbme" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">IEEE Featured Article</a>.
-            </li>
-            <li>
-              <span class="font-mono text-ivory-accent dark:text-obsidian-accent mr-1.5">→</span>
-              <strong>Teaching Portfolio &amp; Ventures</strong> · Browse the <a href="#teaching" data-jump="teaching" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">20-Course Interactive Explorer</a> or <a href="#ventures" data-jump="ventures" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">Founder &amp; Lab Leadership</a>.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- SECTION 02 · SELECTED RESEARCH & PREPRINTS -->
-      <section id="research" data-section="research" aria-labelledby="research-heading" class="scroll-mt-10 pt-8 border-t border-ivory-border dark:border-obsidian-border">
-        <div class="flex flex-wrap items-baseline justify-between gap-2 mb-3">
-          <div>
-            <div class="font-mono text-[0.72rem] uppercase tracking-widest text-ivory-accent dark:text-obsidian-accent font-semibold mb-1">
-              02 · Research &amp; Preprints
-            </div>
-            <h2 id="research-heading" class="font-serif text-[1.55rem] font-semibold tracking-tight">
-              Selected Research &amp; Preprints
-            </h2>
-          </div>
-
-          <div class="flex items-center gap-3 font-mono text-[0.75rem] no-print">
-            <button
-              id="expandAllQuickTakesBtn"
-              type="button"
-              class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80 cursor-pointer"
-            >
-              Open All Quick Takes
-            </button>
-            <span class="text-ivory-border dark:text-obsidian-border">/</span>
-            <a href="https://scholar.google.com/citations?user=DFb3ztIAAAAJ" target="_blank" rel="noopener" class="text-ivory-muted dark:text-obsidian-muted hover:text-ivory-accent dark:hover:text-obsidian-accent transition-colors">
-              Google Scholar ↗
-            </a>
-          </div>
-        </div>
-
-        <p class="text-[0.91rem] text-ivory-muted dark:text-obsidian-muted mb-4">
-          Toggle <strong>Quick Take +</strong> on any manuscript for the plain-English intuition and key result.
+        <p>
+          I am a <mark>CIHR PhD Scholar</mark> in Computer Science at McMaster University working with Rong Zheng in <mark>mechanistic interpretability</mark>, which studies what a trained network computes internally. My neuroscience and biomedical engineering training give me a useful lens here, because the same questions we ask about biological brains, like what each region computes and how signals flow between them, are now the questions we ask about transformers.
         </p>
 
-        <!-- Research Filter Bar & Instant Search -->
-        <div class="space-y-2.5 mb-5 no-print">
-          <div id="paperTabs" role="tablist" aria-label="Filter research by area" class="flex flex-wrap gap-1.5"></div>
+        <p>
+          Alongside my PhD, I served as <mark>Head of AI at McMaster's Vascular AI</mark> for five years, leading machine learning projects on brain blood flow, and as <mark>Founder at Ro (Research Online)</mark>, an incubated health technology startup for large-scale online physiological research supported by Hamilton's Innovation Factory and The Clinic at McMaster. From 2022 to 2025 I was Professor of Computer Science at Mohawk College and authored the textbook <mark>Pearls and Perils of Machine Learning</mark>. I have secured <mark>over $210,000 in research and business funding</mark>, including a $120,000 CIHR Doctoral Scholarship and a $90,000 MITACS Accelerate Entrepreneur grant, and was nominated for the <mark>Vanier Canada Graduate Scholarship</mark>.
+        </p>
 
-          <div>
-            <input
-              id="paperSearchInput"
-              type="search"
-              placeholder="Search manuscripts by topic, method, or venue (e.g. IOI, circuits, sleep, hemodynamic, AAAI)"
-              aria-label="Search manuscripts by keyword"
-              class="w-full px-3.5 py-2 rounded-lg text-[0.86rem] bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border text-ivory-text dark:text-obsidian-text placeholder:text-ivory-faint dark:placeholder:text-obsidian-faint focus:outline-none focus:border-ivory-accent dark:focus:border-obsidian-accent transition-colors"
-            />
-          </div>
-        </div>
+        <nav class="bio-links" aria-label="External profiles">
+          <a href="mailto:mason.kadem@gmail.com">Email</a>
+          <span class="sep">/</span>
+          <a href="https://scholar.google.com/citations?user=DFb3ztIAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <span class="sep">/</span>
+          <a href="https://github.com/masonkadem" target="_blank" rel="noopener">GitHub</a>
+          <span class="sep">/</span>
+          <a href="https://www.linkedin.com/in/mkadem" target="_blank" rel="noopener">LinkedIn</a>
+          <span class="sep">/</span>
+          <a href="https://linktr.ee/masonkadem" target="_blank" rel="noopener">Linktree</a>
+          <span class="sep">/</span>
+          <a href="cv.pdf">CV</a>
+        </nav>
+      </div>
+    </header>
 
-        <div id="papersContainer" class="space-y-3.5" aria-live="polite"></div>
-      </section>
+    <!-- 1. Featured Video, Podcast & Talks -->
+    <section class="section" aria-labelledby="talks-heading">
+      <h2 id="talks-heading">Featured Video, Podcast &amp; Talks</h2>
 
-      <!-- SECTION 03 · TEACHING CATALOG & TEXTBOOK (ALL 20 COURSES) -->
-      <section id="teaching" data-section="teaching" aria-labelledby="teaching-heading" class="scroll-mt-10 pt-8 border-t border-ivory-border dark:border-obsidian-border">
-        <div class="font-mono text-[0.72rem] uppercase tracking-widest text-ivory-accent dark:text-obsidian-accent font-semibold mb-1">
-          03 · Teaching &amp; Authorship
-        </div>
-        <div class="flex flex-wrap items-baseline justify-between gap-2 mb-4">
-          <h2 id="teaching-heading" class="font-serif text-[1.55rem] font-semibold tracking-tight">
-            Courses Taught &amp; Textbook
-          </h2>
-          <span id="courseCountBadge" class="font-mono text-[0.75rem] px-2.5 py-0.5 rounded-full bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-accent dark:text-obsidian-accent font-medium">
-            Showing 20 of 20 courses
-          </span>
-        </div>
-
-        <!-- Textbook Feature Card -->
-        <div id="book-pearls-perils" class="print-avoid-break rounded-xl bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border p-5 mb-6">
-          <div class="flex flex-wrap items-center justify-between gap-2 font-mono text-[0.73rem] mb-1.5">
-            <span class="px-2 py-0.5 rounded bg-ivory-accent/10 dark:bg-obsidian-accent/15 text-ivory-accent dark:text-obsidian-accent font-semibold">
-              Published Textbook · Adopted Across 5 Courses
+      <div class="media-list">
+        <!-- Video 1 (Featured) -->
+        <article class="media-item">
+          <a class="media-thumb" href="https://www.youtube.com/watch?v=Gi_ymHMMfyM" target="_blank" rel="noopener" aria-label="Watch AI in Healthcare Rounds with Mason Kadem on YouTube">
+            <img src="https://i.ytimg.com/vi/Gi_ymHMMfyM/hqdefault.jpg" alt="AI in Healthcare Rounds with Mason Kadem" loading="lazy">
+            <span class="badge-overlay" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor">
+                <polygon points="3,1.5 10.5,6 3,10.5"></polygon>
+              </svg>
             </span>
-            <span class="text-ivory-faint dark:text-obsidian-faint">Campus eBookstore</span>
+          </a>
+          <div class="media-content">
+            <h3 class="media-title">
+              <a href="https://www.youtube.com/watch?v=Gi_ymHMMfyM" target="_blank" rel="noopener">AI in Healthcare Rounds with Mason Kadem</a>
+            </h3>
+            <p class="media-sub">Using AI in clinic and large-scale research · McMaster University Heersink School &amp; DeGroote Hub</p>
           </div>
-          <h3 class="font-serif text-[1.22rem] font-semibold leading-snug mb-1.5">
-            <a href="https://campusebookstore.com/searchproduct/ebookdetail.aspx?ID=9740529" target="_blank" rel="noopener" class="text-ivory-text dark:text-obsidian-text hover:text-ivory-accent dark:hover:text-obsidian-accent underline decoration-ivory-border dark:decoration-obsidian-border underline-offset-4 hover:decoration-current transition-colors">
-              Pearls and Perils of Machine Learning ↗
-            </a>
-          </h3>
-          <p class="text-[0.91rem] text-ivory-muted dark:text-obsidian-muted">
-            Grounded in neuroscience-informed learning design so students retain how models truly behave rather than memorizing black-box recipes. Covers data leakage, confounding variables, miscalibrated evaluation metrics, and shortcut learning across five courses I developed, including graduate instruction at McMaster University.
-          </p>
-        </div>
+        </article>
 
-        <p class="text-[0.89rem] text-ivory-muted dark:text-obsidian-muted mb-4">
-          Includes service as full-time and sessional Professor of Computer Science at Mohawk College from 2022 to 2025 alongside curriculum development and instruction across McMaster University, Western University, Fanshawe College, the Vector Institute, and STEM Montessori Academy of Canada.
-        </p>
-
-        <!-- Dual Axis Course Explorer + Live Search -->
-        <div class="space-y-2.5 mb-4 no-print">
-          <div id="instFilterBar" role="group" aria-label="Filter courses by institution" class="flex flex-wrap items-center gap-1.5"></div>
-          <div id="domainFilterBar" role="group" aria-label="Filter courses by subject domain" class="flex flex-wrap items-center gap-1.5"></div>
-          <div>
-            <input
-              id="courseSearchInput"
-              type="search"
-              placeholder="Search 20 courses by code, title, or institution (e.g. COMP 10261, KINESIOL 731, UNIX, Forensics)"
-              aria-label="Search courses by code, title, or institution"
-              class="w-full px-3.5 py-2 rounded-lg text-[0.85rem] bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border text-ivory-text dark:text-obsidian-text placeholder:text-ivory-faint dark:placeholder:text-obsidian-faint focus:outline-none focus:border-ivory-accent dark:focus:border-obsidian-accent transition-colors"
-            />
+        <!-- Video 2 -->
+        <article class="media-item">
+          <a class="media-thumb" href="https://www.youtube.com/watch?v=Y58PilxRoT0" target="_blank" rel="noopener" aria-label="Watch Residency at The Clinic with Mason Kadem on YouTube">
+            <img src="https://i.ytimg.com/vi/Y58PilxRoT0/hqdefault.jpg" alt="Residency at The Clinic with Mason Kadem" loading="lazy">
+            <span class="badge-overlay" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor">
+                <polygon points="3,1.5 10.5,6 3,10.5"></polygon>
+              </svg>
+            </span>
+          </a>
+          <div class="media-content">
+            <h3 class="media-title">
+              <a href="https://www.youtube.com/watch?v=Y58PilxRoT0" target="_blank" rel="noopener">Residency at The Clinic with Mason Kadem</a>
+            </h3>
+            <p class="media-sub">Enabling large-scale remote physiological research online with Ro · McMaster Innovation Hub</p>
           </div>
-        </div>
+        </article>
 
-        <!-- Course Grid -->
-        <div id="coursesContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3" aria-live="polite"></div>
-      </section>
-
-      <!-- SECTION 04 · LEADERSHIP, VENTURES & TRANSLATION -->
-      <section id="ventures" data-section="ventures" aria-labelledby="ventures-heading" class="scroll-mt-10 pt-8 border-t border-ivory-border dark:border-obsidian-border">
-        <div class="font-mono text-[0.72rem] uppercase tracking-widest text-ivory-accent dark:text-obsidian-accent font-semibold mb-1">
-          04 · Ventures &amp; Lab Leadership
-        </div>
-        <h2 id="ventures-heading" class="font-serif text-[1.55rem] font-semibold tracking-tight mb-4">
-          Leadership, Ventures &amp; Translation
-        </h2>
-
-        <div class="space-y-3.5">
-          <!-- Founder at Ro Research Online -->
-          <div id="role-ro" class="print-avoid-break rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border p-5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1.5">
-              <h3 class="font-serif text-[1.15rem] font-semibold text-ivory-text dark:text-obsidian-text">
-                Founder &amp; Technical Lead · <a href="https://researchonline.ca" target="_blank" rel="noopener" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">Ro (Research Online) ↗</a>
-              </h3>
-              <span class="font-mono text-[0.74rem] text-ivory-faint dark:text-obsidian-faint">
-                Digital Health Platform
-              </span>
-            </div>
-            <p class="text-[0.92rem] text-ivory-muted dark:text-obsidian-muted">
-              Directing engineering architecture and remote physiological research tooling for an incubated health technology venture supported by <a href="https://innovationfactory.ca" target="_blank" rel="noopener" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">Hamilton's Innovation Factory</a> and The Clinic at McMaster.
-            </p>
+        <!-- Podcast -->
+        <article class="media-item">
+          <div class="media-thumb podcast-thumb" aria-hidden="true">
+            <svg width="124" height="52" viewBox="0 0 124 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="20" width="4" height="12" rx="2" fill="#94a3b8"/>
+              <rect x="18" y="13" width="4" height="26" rx="2" fill="#64748b"/>
+              <rect x="28" y="17" width="4" height="18" rx="2" fill="#94a3b8"/>
+              <rect x="38" y="9" width="4" height="34" rx="2" fill="#1772d0"/>
+              <rect x="55" y="10" width="14" height="22" rx="7" stroke="#1772d0" stroke-width="2.2" fill="#ffffff"/>
+              <path d="M50 25C50 31.6274 55.3726 37 62 37C68.6274 37 74 31.6274 74 25" stroke="#1772d0" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="62" y1="37" x2="62" y2="43" stroke="#1772d0" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="56" y1="43" x2="68" y2="43" stroke="#1772d0" stroke-width="2.2" stroke-linecap="round"/>
+              <rect x="82" y="11" width="4" height="30" rx="2" fill="#1772d0"/>
+              <rect x="92" y="18" width="4" height="16" rx="2" fill="#94a3b8"/>
+              <rect x="102" y="14" width="4" height="24" rx="2" fill="#64748b"/>
+              <rect x="112" y="21" width="4" height="10" rx="2" fill="#94a3b8"/>
+            </svg>
+            <span class="badge-overlay">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+                <rect x="5.5" y="2" width="5" height="8" rx="2.5"></rect>
+                <path d="M3.5 7.5a4.5 4.5 0 0 0 9 0"></path>
+                <line x1="8" y1="12" x2="8" y2="14.5"></line>
+              </svg>
+            </span>
           </div>
-
-          <!-- Head of AI at Vascular AI -->
-          <div id="role-vascular" class="print-avoid-break rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border p-5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1.5">
-              <h3 class="font-serif text-[1.15rem] font-semibold text-ivory-text dark:text-obsidian-text">
-                Head of AI · <a href="https://vascularai.ca" target="_blank" rel="noopener" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">Vascular AI ↗</a>
-              </h3>
-              <span class="font-mono text-[0.74rem] text-ivory-faint dark:text-obsidian-faint">
-                5 Years · McMaster University
-              </span>
-            </div>
-            <p class="text-[0.92rem] text-ivory-muted dark:text-obsidian-muted">
-              Led cross-disciplinary machine learning initiatives on cerebral blood flow and large population cohorts including the 50,000+ participant Canadian Longitudinal Study on Aging (CLSA), building reproducible validation pipelines and mentoring junior doctoral trainees.
-            </p>
+          <div class="media-content">
+            <h3 class="media-title">NSERC CREATE sMAP Podcast · Host</h3>
+            <p class="media-sub">Host of McMaster University's Rethinking Mobility in Aging podcast series (Apple Podcasts), interviewing faculty and graduate researchers on aging, mobility, and human-centered technology.</p>
           </div>
+        </article>
+      </div>
 
-          <!-- Grants, Commercialization & Patents -->
-          <div id="role-grants" class="print-avoid-break rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border p-5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1.5">
-              <h3 class="font-serif text-[1.15rem] font-semibold text-ivory-text dark:text-obsidian-text">
-                Grants, Commercialization &amp; Patents
-              </h3>
-              <span class="font-mono text-[0.74rem] px-2 py-0.5 rounded bg-ivory-accent/10 dark:bg-obsidian-accent/15 text-ivory-accent dark:text-obsidian-accent font-medium">
-                $210,000+ Secured
-              </span>
-            </div>
-            <p class="text-[0.92rem] text-ivory-muted dark:text-obsidian-muted">
-              Secured over <strong>$210,000</strong> in competitive research and business funding including a <a href="https://healthinnovation.mcmaster.ca/residency-alumnus-awarded-90000-by-mitacs/" target="_blank" rel="noopener" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80"><strong>$90,000 MITACS Accelerate Entrepreneur grant</strong></a>, alongside U.S. provisional patent co-inventorship filed via the McMaster Industry Liaison Office.
-            </p>
-          </div>
-        </div>
-      </section>
+      <ul class="compact-list">
+        <li><span class="year-tag">2026</span> · <mark>1st Place</mark>, Computing and Software Technical Research Competition, McMaster University</li>
+        <li><span class="year-tag">2026</span> · <mark>People's Choice Award</mark>, NSERC CREATE sMAP Symposium, McMaster University</li>
+        <li><span class="year-tag">2025</span> · <mark>1st Place Technical Award</mark>, IEEE Artificial Intelligence of Things (AIoT), Osaka, Japan</li>
+        <li><span class="year-tag">2025</span> · AAAI Symposium Series Presentation, Dubai, UAE</li>
+        <li><span class="year-tag">2023</span> · AAAI Symposium Series Presentation, Singapore</li>
+      </ul>
+    </section>
 
-      <!-- SECTION 05 · SELECTED TALKS & HONOURS -->
-      <section id="talks" data-section="talks" aria-labelledby="talks-heading" class="scroll-mt-10 pt-8 border-t border-ivory-border dark:border-obsidian-border">
-        <div class="font-mono text-[0.72rem] uppercase tracking-widest text-ivory-accent dark:text-obsidian-accent font-semibold mb-1">
-          05 · Stages &amp; Recognition
-        </div>
-        <h2 id="talks-heading" class="font-serif text-[1.55rem] font-semibold tracking-tight mb-3">
-          Selected Talks &amp; Honours
-        </h2>
+    <!-- 2. Selected Research -->
+    <section class="section" aria-labelledby="research-heading">
+      <h2 id="research-heading">Selected Research</h2>
 
-        <div id="talksContainer" class="divide-y divide-ivory-border dark:divide-obsidian-border"></div>
-      </section>
+      <ul class="pub-list">
+        <li>
+          <span class="pub-title">Self-Sizing Attention for Recovering Known Circuits</span>
+          · <span class="pub-venue">Coming soon</span>
+        </li>
+        <li>
+          <span class="pub-title">Cross-Site Transformer Auditing and Multi-Site Signal Fusion</span>
+          · <span class="pub-venue">Coming soon</span>
+          · <span class="pub-note">Outperforms previous best by 20%, <mark>People's Choice Award</mark> at NSERC CREATE sMAP, <mark>United States provisional patent</mark> filed through the McMaster Industry Liaison Office</span>
+        </li>
+        <li>
+          <span class="pub-title">Controlling Transformer Internals through Attention Head Intervention</span>
+          (<a href="https://arxiv.org/abs/2601.04398" target="_blank" rel="noopener">arXiv</a> / <a href="https://arxiv.org/pdf/2601.04398" target="_blank" rel="noopener">PDF</a>)
+          · <span class="pub-venue">2026</span>
+          · <span class="pub-note">Picked up and discussed in several technical blogs on interpretability</span>
+        </li>
+        <li>
+          <span class="pub-title">Ambient and Wearable Sensing in Dementia Care</span>
+          · <span class="pub-venue">In press, IEEE Internet of Things Journal</span>
+        </li>
+        <li>
+          <span class="pub-title">Towards Clinically Interpretable Sleep Staging</span>
+          (<a href="http://www.ieee-aiot.org/2025/accepted-papers.php" target="_blank" rel="noopener">Accepted Papers</a>)
+          · <span class="pub-venue">IEEE AIoT 2025, Osaka, Japan</span>
+          · <mark>1st Place Technical Award</mark>
+        </li>
+        <li>
+          <span class="pub-title">Human-Clinical AI Agent Collaboration</span>
+          (<a href="https://doi.org/10.1609/aaaiss.v6i1.36060" target="_blank" rel="noopener">Paper</a>)
+          · <span class="pub-venue">Proceedings of the AAAI Symposium Series 2025, Dubai</span>
+        </li>
+        <li>
+          <span class="pub-title">XGBoost for Interpretable Alzheimer's Decision Support</span>
+          · <span class="pub-venue">AAAI Symposium Series 2023, Singapore</span>
+        </li>
+        <li>
+          <span class="pub-title">Hemodynamic Modeling, Medical Imaging, and Machine Learning and Their Applications to Cardiovascular Interventions</span>
+          (<a href="https://pubmed.ncbi.nlm.nih.gov/35015648/" target="_blank" rel="noopener">PubMed</a>)
+          · <span class="pub-venue">IEEE Reviews in Biomedical Engineering, 2023</span>
+          · <mark>Featured Article, 100+ citations</mark>
+        </li>
+        <li>
+          <span class="pub-title">Pupil Size Tracks Semantic Ambiguity as Well as Noise</span>
+          · <span class="pub-venue">Cognitive effort, attention, and signal processing, Western University</span>
+        </li>
+      </ul>
+    </section>
 
-      <!-- SECTION 06 · EDUCATION, FELLOWSHIPS & CERTIFICATIONS -->
-      <section id="credentials" data-section="credentials" aria-labelledby="credentials-heading" class="scroll-mt-10 pt-8 border-t border-ivory-border dark:border-obsidian-border">
-        <div class="font-mono text-[0.72rem] uppercase tracking-widest text-ivory-accent dark:text-obsidian-accent font-semibold mb-1">
-          06 · Academic Credentials
-        </div>
-        <h2 id="credentials-heading" class="font-serif text-[1.55rem] font-semibold tracking-tight mb-4">
-          Education, Fellowships &amp; Certifications
-        </h2>
+    <!-- 3. Teaching & Book -->
+    <section class="section" aria-labelledby="teaching-heading">
+      <h2 id="teaching-heading">Teaching &amp; Book</h2>
 
-        <ul class="space-y-3 text-[0.94rem]">
-          <li id="edu-phd" class="print-avoid-break rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border px-4 py-3.5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <strong class="font-serif text-[1.06rem] text-ivory-text dark:text-obsidian-text">PhD in Computer Science (AI Specialization, near completion)</strong>
-              <span class="font-mono text-[0.75rem] text-ivory-faint dark:text-obsidian-faint">McMaster University</span>
-            </div>
-            <p class="text-[0.88rem] text-ivory-muted dark:text-obsidian-muted mt-1">
-              Awarded the <strong>CIHR Doctoral Scholarship ($120,000)</strong> · <strong>Vanier Canada Graduate Scholarship Nominee</strong>.
-            </p>
-          </li>
+      <p class="teaching-copy">
+        I have taught and developed curriculum across computer science, digital health, and cybersecurity at Mohawk, McMaster, Western, Fanshawe, and the Vector Institute. My textbook <a href="https://campusebookstore.com/searchproduct/ebookdetail.aspx?ID=9740529" target="_blank" rel="noopener">Pearls and Perils of Machine Learning</a> has been adopted in five courses I developed, including a current graduate course at McMaster, and was recognized on <a href="https://www.mohawknewsdesk.ca/mohawk-college-celebrates-authors-in-its-midst-on-national-authors-day/" target="_blank" rel="noopener">Mohawk College National Authors Day</a>.
+      </p>
 
-          <li id="edu-masc" class="print-avoid-break rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border px-4 py-3.5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <strong class="font-serif text-[1.06rem] text-ivory-text dark:text-obsidian-text">MASc in Biomedical Engineering</strong>
-              <span class="font-mono text-[0.75rem] text-ivory-faint dark:text-obsidian-faint">McMaster University</span>
-            </div>
-            <p class="text-[0.88rem] text-ivory-muted dark:text-obsidian-muted mt-1">
-              Ranked in the <strong>top 5% of students</strong>.
-            </p>
-          </li>
-
-          <li id="edu-msc" class="print-avoid-break rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border px-4 py-3.5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <strong class="font-serif text-[1.06rem] text-ivory-text dark:text-obsidian-text">MSc in Neuroscience</strong>
-              <span class="font-mono text-[0.75rem] text-ivory-faint dark:text-obsidian-faint">Schulich School of Medicine and Dentistry, Western University</span>
-            </div>
-          </li>
-
-          <li id="edu-bsc" class="print-avoid-break rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border px-4 py-3.5">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <strong class="font-serif text-[1.06rem] text-ivory-text dark:text-obsidian-text">BSc Honours in Psychology (HCI &amp; Remote Physiological Signal Acquisition)</strong>
-              <span class="font-mono text-[0.75rem] text-ivory-faint dark:text-obsidian-faint">Brain and Mind Institute, Western University</span>
-            </div>
-          </li>
-
-          <li id="edu-certs" class="print-avoid-break rounded-xl bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border px-4 py-3.5">
-            <div class="font-mono text-[0.72rem] uppercase tracking-wider text-ivory-accent dark:text-obsidian-accent font-semibold mb-1">
-              Professional Certifications
-            </div>
-            <p class="text-[0.89rem] text-ivory-muted dark:text-obsidian-muted">
-              Machine Learning Theory (University of Oxford) · High-Performance Computing (Compute Ontario) · University Teaching (Western University)
-            </p>
-          </li>
+      <details class="course-details">
+        <summary>View all 20 courses taught across McMaster, Mohawk, Western, Fanshawe &amp; Vector Institute</summary>
+        <ul class="course-grid">
+          <li><span class="course-code">KINESIOL 731</span> · Supervised Machine Learning for the Physiologist <span class="course-inst">(McMaster)</span></li>
+          <li><span class="course-code">MECHENG 4BF3</span> · Biofluid Mechanics Systems <span class="course-inst">(McMaster)</span></li>
+          <li><span class="course-code">KIN 4B03</span> · Cardiovascular Disease, Pathophysiology and Rehabilitation <span class="course-inst">(McMaster)</span></li>
+          <li><span class="course-code">ENGINEER 1PA3</span> · Introduction to Engineering Design and Practice <span class="course-inst">(McMaster)</span></li>
+          <li><span class="course-code">COMP 10261</span> · Introduction to Intelligent Systems <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">COMP 10001</span> · Programming Fundamentals <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">COMP 10259</span> · Client Side Web Programming <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">COMP CO835</span> · Object Oriented Systems <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">COMP CO710</span> · HTML and CSS <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">COMP 10024</span> · Fundamentals of UNIX <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">COMP 10219</span> · Digital Forensics <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">CYBR 10011</span> · Cyber Security Management <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">INFO 10302</span> · Data Analytics and Reporting for Healthcare <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">INFO 10300</span> · Digital Health Devices <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">INFO 10298</span> · Telehealth, Virtual Hospitals and Remote Patient Monitoring <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">MGMT 10180</span> · Change Management and Process Modelling <span class="course-inst">(Mohawk)</span></li>
+          <li><span class="course-code">SRTY-3009</span> · Computational Intelligence for Security <span class="course-inst">(Fanshawe)</span></li>
+          <li><span class="course-code">Psych 2820E</span> · Research Methods and Statistics <span class="course-inst">(Western)</span></li>
+          <li><span class="course-code">Vector Institute</span> · ML Fundamentals</li>
+          <li><span class="course-code">STEM Canada</span> · Applied AI</li>
         </ul>
-      </section>
-
-      <!-- Footer -->
-      <footer class="pt-8 border-t border-ivory-border dark:border-obsidian-border flex flex-wrap items-center justify-between gap-3 font-mono text-[0.75rem] text-ivory-faint dark:text-obsidian-faint">
-        <span>© Mason Kadem · Dundas / Hamilton, ON</span>
-        <span class="no-print">Press <kbd class="px-1.5 py-0.5 rounded bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border">Cmd K</kbd> or <kbd class="px-1.5 py-0.5 rounded bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border">/</kbd> for instant search</span>
-      </footer>
-    </main>
-  </div>
-
-  <!-- COMMAND PALETTE MODAL (Cmd+K / Ctrl+K or /) -->
-  <div
-    id="cmdModal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="cmdModalLabel"
-    class="fixed inset-0 z-50 hidden items-start justify-center pt-[10vh] px-4 bg-black/50 backdrop-blur-[2px] no-print"
-  >
-    <div class="w-full max-w-[590px] rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border shadow-2xl overflow-hidden">
-      <label id="cmdModalLabel" for="cmdInput" class="sr-only">Search papers, all 20 courses, talks, roles, and actions</label>
-      <div class="flex items-center gap-3 px-4 py-3 border-b border-ivory-border dark:border-obsidian-border">
-        <span aria-hidden="true" class="font-mono text-ivory-accent dark:text-obsidian-accent">⌕</span>
-        <input
-          id="cmdInput"
-          type="text"
-          autocomplete="off"
-          placeholder="Search papers, course codes like COMP 10261 or KINESIOL 731, talks, or sections"
-          class="w-full bg-transparent text-[0.91rem] text-ivory-text dark:text-obsidian-text placeholder:text-ivory-faint dark:placeholder:text-obsidian-faint focus:outline-none"
-        />
-        <button
-          id="cmdCloseBtn"
-          type="button"
-          class="font-mono text-[0.7rem] px-1.5 py-0.5 rounded bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-faint dark:text-obsidian-faint hover:text-ivory-text dark:hover:text-obsidian-text cursor-pointer"
-        >
-          ESC
-        </button>
-      </div>
-
-      <ul id="cmdResults" role="listbox" class="max-h-[350px] overflow-y-auto p-2 space-y-0.5"></ul>
-
-      <div class="px-4 py-2 border-t border-ivory-border dark:border-obsidian-border bg-ivory-surface dark:bg-obsidian-surface flex items-center justify-between font-mono text-[0.7rem] text-ivory-faint dark:text-obsidian-faint">
-        <span>↑↓ Navigate · Enter Select</span>
-        <span>Esc Close</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- TOAST NOTIFICATION -->
-  <div
-    id="toastContainer"
-    role="status"
-    aria-live="polite"
-    class="fixed bottom-5 right-5 z-50 px-3.5 py-2.5 rounded-lg font-mono text-[0.78rem] bg-ivory-text text-ivory-bg dark:bg-obsidian-text dark:text-obsidian-bg shadow-lg border border-ivory-border/20 opacity-0 translate-y-2 pointer-events-none transition-all duration-200 no-print"
-  ></div>
-
-  <!-- APPLICATION STATE & INTERACTIVE DATA ENGINE -->
-  <script>
-    (function () {
-      'use strict';
-
-      /* 1. CANONICAL RESEARCH WORKS (7 MANUSCRIPTS, ZERO COLONS OR EM DASHES IN VISIBLE STRINGS) */
-      var PAPERS = [
-        {
-          id: 'paper-self-sizing',
-          meta: 'Coming Soon · Working Manuscript',
-          badge: 'Mechanistic Interpretability',
-          title: 'Self-Sizing Attention for Recovering Known Circuits',
-          url: '',
-          tags: ['interp'],
-          summary: 'Adaptive attention-head pruning and self-sizing mechanisms that isolate task-critical transformer circuits, strengthen target logit differences when inhibitory heads are removed on Indirect Object Identification, and test backup-head emergence across synthetic and language tasks.',
-          links: [],
-          quickTake: 'Not all attention heads contribute positively to a circuit. Allowing attention layers to self-size prunes inhibitory heads on Indirect Object Identification (strengthening target logit differences beyond the full model) while verifying where backup heads emerge across synthetic and language tasks.',
-          bibtex: ''
-        },
-        {
-          id: 'paper-cross-site',
-          meta: 'Coming Soon · U.S. Provisional Patent Filed',
-          badge: "People's Choice Award",
-          title: 'Cross-Site Transformer Auditing and Hemodynamically Informed Multi-Site Signal Fusion',
-          url: '',
-          tags: ['interp', 'physio'],
-          summary: 'Upcoming manuscript introducing cross-site physiological signal fusion that outperforms prior best multi-site fusion methods by 20 percent using LLM-style interpretability techniques to audit internal representations against physical propagation laws. Winner of the People\'s Choice Award at the NSERC CREATE sMAP Symposium and covered by a U.S. provisional patent filed through the McMaster Industry Liaison Office.',
-          links: [],
-          quickTake: 'Multi-stream physiological networks frequently exploit sensor-specific artifacts rather than true biology. Auditing cross-site attention routing against physical pulse-wave propagation eliminates shortcut reliance and delivers a 20 percent improvement over prior state-of-the-art methods.',
-          bibtex: ''
-        },
-        {
-          id: 'paper-head-intervention',
-          meta: '2026 · arXiv Preprint',
-          badge: 'Transformer Internals',
-          title: 'Controlling Transformer Internals through Attention Head Intervention',
-          url: 'https://arxiv.org/abs/2601.04398',
-          tags: ['interp'],
-          summary: 'Targeted causal interventions on transformer attention heads to isolate task-critical circuits, prune redundant pathways, and steer internal model behaviour. Picked up and discussed in technical blogs on interpretability.',
-          links: [
-            { label: 'arXiv 2601.04398', href: 'https://arxiv.org/abs/2601.04398' },
-            { label: 'PDF', href: 'https://arxiv.org/pdf/2601.04398' }
-          ],
-          quickTake: 'Intervening directly on individual attention heads lets us test causal hypotheses about what internal subnetworks compute rather than treating transformer layers as opaque blocks.',
-          bibtex: '@article{kadem2026controlling,\n  title={Controlling Transformer Internals through Attention Head Intervention},\n  author={Kadem, Mason},\n  journal={arXiv preprint arXiv:2601.04398},\n  year={2026}\n}'
-        },
-        {
-          id: 'paper-aaai-trust',
-          meta: '2025 · AAAI Symposium Series Dubai',
-          badge: 'AI Safety & Trust',
-          title: 'Human and Clinical AI Agent Collaboration on Trust Calibration and Accountability',
-          url: 'https://doi.org/10.1609/aaaiss.v6i1.36060',
-          tags: ['trust', 'physio'],
-          summary: 'Practical accountability structures and workflow safeguards against automation bias and human over-reliance when deploying AI agents alongside clinicians in high-stakes settings.',
-          links: [
-            { label: 'AAAI Proceedings', href: 'https://doi.org/10.1609/aaaiss.v6i1.36060' }
-          ],
-          quickTake: 'Strong offline benchmark scores do not prevent dangerous deployment failures if busy operators rubber-stamp agent outputs. We define explicit verification checkpoints and accountability boundaries to keep human oversight genuine.',
-          bibtex: '@inproceedings{kadem2025human,\n  title={Human-Clinical AI Agent Collaboration},\n  author={Kadem, Mason and collaborators},\n  booktitle={Proceedings of the AAAI Symposium Series},\n  volume={6},\n  number={1},\n  doi={10.1609/aaaiss.v6i1.36060},\n  year={2025}\n}'
-        },
-        {
-          id: 'paper-sleep-staging',
-          meta: '2025 · IEEE AIoT Osaka',
-          badge: '1st Place Technical Award',
-          title: 'Interpretable Deep Learning Architectures for Physiological Sleep Staging',
-          url: 'http://www.ieee-aiot.org/2025/accepted-papers.php',
-          tags: ['interp', 'physio'],
-          summary: 'Glass-box neural architectures exposing verifiable physiological waveforms for automated sleep staging, winning the 1st Place Technical Award in Osaka, Japan.',
-          links: [
-            { label: 'IEEE AIoT Accepted Papers', href: 'http://www.ieee-aiot.org/2025/accepted-papers.php' }
-          ],
-          quickTake: 'Structuring intermediate neural representations around inspectable physiological waveform primitives lets domain specialists verify sleep-stage transitions without sacrificing accuracy.',
-          bibtex: '@inproceedings{kadem2025sleep,\n  title={Towards Clinically Interpretable Sleep Staging},\n  author={Kadem, Mason and collaborators},\n  booktitle={IEEE International Conference on Artificial Intelligence of Things (AIoT)},\n  year={2025}\n}'
-        },
-        {
-          id: 'paper-ieee-rbme',
-          meta: '2023 · IEEE Reviews in Biomedical Engineering',
-          badge: 'IEEE Featured Article · 100+ Citations',
-          title: 'Hemodynamic Modelling, Medical Imaging, and Machine Learning Applications to Cardiovascular Decision Support',
-          url: 'https://pubmed.ncbi.nlm.nih.gov/35015648/',
-          tags: ['physio'],
-          summary: 'First-authored synthesis uniting physics-based hemodynamic modelling, multimodal medical imaging, and machine learning for clinical decision support.',
-          links: [
-            { label: 'PubMed 35015648', href: 'https://pubmed.ncbi.nlm.nih.gov/35015648/' }
-          ],
-          quickTake: 'Purely statistical models falter out of distribution when physical conservation laws are ignored. Pairing mechanistic fluid physics with multimodal imaging grounds clinical ML predictions in real hemodynamics.',
-          bibtex: '@article{kadem2023hemodynamic,\n  title={Hemodynamic Modeling, Medical Imaging, and Machine Learning and Their Applications to Cardiovascular Interventions},\n  author={Kadem, Mason and Garber, Lindsey and Abdelkhalek, Mohamed and Al-Khazraji, Baraa K and Keshavarz-Motamed, Zahra},\n  journal={IEEE Reviews in Biomedical Engineering},\n  volume={16},\n  pages={403--423},\n  year={2023},\n  pmid={35015648}\n}'
-        },
-        {
-          id: 'paper-xgboost-alzheimers',
-          meta: '2023 · AAAI Symposium Series',
-          badge: 'Clinical Decision Support',
-          title: "XGBoost for Interpretable Alzheimer's Decision Support",
-          url: 'https://scholar.google.com/citations?user=DFb3ztIAAAAJ',
-          tags: ['trust', 'physio'],
-          summary: 'Accessible clinical features and operable decision routes providing transparent feature attributions for neurodegenerative screening support.',
-          links: [
-            { label: 'Scholar Profile', href: 'https://scholar.google.com/citations?user=DFb3ztIAAAAJ' }
-          ],
-          quickTake: 'Combines calibrated gradient-boosted trees with patient-level attribution paths so practitioners can audit individual clinical and cognitive contributors directly.',
-          bibtex: '@inproceedings{kadem2023xgboost,\n  title={XGBoost for Interpretable Alzheimer\'s Decision Support},\n  author={Kadem, Mason and collaborators},\n  booktitle={Proceedings of the AAAI Symposium Series},\n  year={2023}\n}'
-        }
-      ];
-
-      var PAPER_TABS = [
-        { key: 'all', label: 'All Work' },
-        { key: 'interp', label: 'Interpretability & Circuits' },
-        { key: 'physio', label: 'Biomedical & Signal Fusion' },
-        { key: 'trust', label: 'Human-AI Trust' }
-      ];
-
-      /* 2. COMPLETE 20-COURSE TEACHING CATALOG */
-      var COURSES = [
-        {
-          id: 'course-kinesiol-731',
-          code: 'KINESIOL 731',
-          title: 'Supervised Machine Learning for the Physiologist',
-          institution: 'McMaster University',
-          instKey: 'McMaster University',
-          level: 'Graduate',
-          domain: 'AI & Data Science',
-          desc: 'Graduate applied ML course adopting Pearls and Perils of Machine Learning for physiological datasets and validation design.'
-        },
-        {
-          id: 'course-mecheng-4bf3',
-          code: 'MECHENG 4BF3',
-          title: 'Biofluid Mechanics Systems',
-          institution: 'McMaster University',
-          instKey: 'McMaster University',
-          level: 'Undergraduate',
-          domain: 'Digital Health & Bioeng',
-          desc: 'Hemodynamic flow physics, pulsatile wave propagation, and quantitative vascular transport modelling.'
-        },
-        {
-          id: 'course-kin-4b03',
-          code: 'KIN 4B03',
-          title: 'Cardiovascular Disease, Pathophysiology and Rehabilitation',
-          institution: 'McMaster University',
-          instKey: 'McMaster University',
-          level: 'Undergraduate',
-          domain: 'Digital Health & Bioeng',
-          desc: 'Integrative cardiovascular physiology, diagnostic interpretation, and clinical rehabilitation frameworks.'
-        },
-        {
-          id: 'course-engineer-1pa3',
-          code: 'ENGINEER 1PA3',
-          title: 'Introduction to Engineering Design and Practice',
-          institution: 'McMaster University',
-          instKey: 'McMaster University',
-          level: 'Undergraduate',
-          domain: 'CS & Software',
-          desc: 'Foundational systems design, algorithmic problem decomposition, prototyping, and engineering ethics.'
-        },
-        {
-          id: 'course-comp-10261',
-          code: 'COMP 10261',
-          title: 'Introduction to Intelligent Systems',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Undergraduate',
-          domain: 'AI & Data Science',
-          desc: 'Supervised and unsupervised learning, model evaluation traps, search strategies, and inspectable AI pipelines.'
-        },
-        {
-          id: 'course-comp-10001',
-          code: 'COMP 10001',
-          title: 'Programming Fundamentals',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Undergraduate',
-          domain: 'CS & Software',
-          desc: 'Core computational thinking, control structures, modular code design, and systematic debugging.'
-        },
-        {
-          id: 'course-comp-co835',
-          code: 'COMP CO835',
-          title: 'Object Oriented Systems',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Undergraduate',
-          domain: 'CS & Software',
-          desc: 'Encapsulation, polymorphism, software architecture patterns, and testable object-oriented design.'
-        },
-        {
-          id: 'course-comp-10259',
-          code: 'COMP 10259',
-          title: 'Client Side Web Programming',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Undergraduate',
-          domain: 'CS & Software',
-          desc: 'Interactive DOM engineering, asynchronous JavaScript state management, and responsive interface architecture.'
-        },
-        {
-          id: 'course-comp-co710',
-          code: 'COMP CO710',
-          title: 'Web Design with HTML and CSS',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Continuing Ed',
-          domain: 'CS & Software',
-          desc: 'Semantic document structure, accessible layout systems, responsive typography, and modern CSS standards.'
-        },
-        {
-          id: 'course-comp-10024',
-          code: 'COMP 10024',
-          title: 'Fundamentals of UNIX',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Undergraduate',
-          domain: 'CS & Software',
-          desc: 'POSIX command-line workflows, shell scripting, permissions, process management, and system administration.'
-        },
-        {
-          id: 'course-comp-10219',
-          code: 'COMP 10219',
-          title: 'Digital Forensics',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Undergraduate',
-          domain: 'Cybersecurity',
-          desc: 'Chain-of-custody evidence acquisition, file-system artifact recovery, and incident investigation.'
-        },
-        {
-          id: 'course-cybr-10011',
-          code: 'CYBR 10011',
-          title: 'Cyber Security Evaluation and Project Management',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Post-Grad',
-          domain: 'Cybersecurity',
-          desc: 'Security posture auditing, threat surface assessment, risk governance, and technical project delivery.'
-        },
-        {
-          id: 'course-info-10302',
-          code: 'INFO 10302',
-          title: 'Data Analytics and Reporting for Healthcare',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Post-Grad',
-          domain: 'AI & Data Science',
-          desc: 'Clinical cohort curation, biostatistical analysis, data hygiene, and decision-support reporting.'
-        },
-        {
-          id: 'course-info-10298',
-          code: 'INFO 10298',
-          title: 'Telehealth, Virtual Hospitals and Remote Patient Monitoring',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Post-Grad',
-          domain: 'Digital Health & Bioeng',
-          desc: 'Connected care architectures, continuous remote physiological telemetry, and virtual clinical workflows.'
-        },
-        {
-          id: 'course-info-10300',
-          code: 'INFO 10300',
-          title: 'Digital Health Devices',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Post-Grad',
-          domain: 'Digital Health & Bioeng',
-          desc: 'Wearable biosensors, signal acquisition hardware, medical device validation, and interoperability.'
-        },
-        {
-          id: 'course-mgmt-10180',
-          code: 'MGMT 10180',
-          title: 'Change Management and Process Modelling',
-          institution: 'Mohawk College',
-          instKey: 'Mohawk College',
-          level: 'Post-Grad',
-          domain: 'Management & Research',
-          desc: 'Enterprise workflow mapping, socio-technical systems adoption, and operational transformation.'
-        },
-        {
-          id: 'course-srty-3009',
-          code: 'SRTY 3009',
-          title: 'Computational Intelligence for Security',
-          institution: 'Fanshawe College',
-          instKey: 'Fanshawe College',
-          level: 'Undergraduate',
-          domain: 'Cybersecurity',
-          desc: 'Machine learning for intrusion and anomaly detection, adversarial robustness, and security analytics.'
-        },
-        {
-          id: 'course-vector-ml',
-          code: 'VECTOR ML',
-          title: 'Machine Learning Fundamentals',
-          institution: 'Vector Institute',
-          instKey: 'Vector Institute',
-          level: 'Professional / Graduate',
-          domain: 'AI & Data Science',
-          desc: 'Statistical learning foundations, generalization theory, regularization, and modern deep learning.'
-        },
-        {
-          id: 'course-psych-2820e',
-          code: 'PSYCH 2820E',
-          title: 'Research Methods and Statistics',
-          institution: 'Western University',
-          instKey: 'Western University',
-          level: 'Full-Year Undergraduate',
-          domain: 'Management & Research',
-          desc: 'Experimental design, hypothesis testing, statistical power, confound control, and empirical inference.'
-        },
-        {
-          id: 'course-stem-ai',
-          code: 'STEM AI',
-          title: 'Artificial Intelligence, Neuroscience and Programming',
-          institution: 'STEM Montessori Academy of Canada',
-          instKey: 'STEM Canada',
-          level: 'Youth Enrichment',
-          domain: 'AI & Data Science',
-          desc: 'Interactive introduction connecting biological brains, Python programming, and neural network intuition.'
-        }
-      ];
-
-      var INSTITUTIONS = [
-        'All Institutions',
-        'Mohawk College',
-        'McMaster University',
-        'Western University',
-        'Fanshawe College',
-        'Vector Institute',
-        'STEM Canada'
-      ];
-
-      var DOMAINS = [
-        'All Domains',
-        'AI & Data Science',
-        'CS & Software',
-        'Cybersecurity',
-        'Digital Health & Bioeng',
-        'Management & Research'
-      ];
-
-      /* 3. SELECTED TALKS & HONOURS */
-      var TALKS = [
-        {
-          id: 'talk-mcmaster-2026',
-          whenWhere: '2026 · Hamilton, ON',
-          heading: '1st Place · McMaster Computing and Software Technical Research Competition',
-          detail: 'Departmental research competition recognizing mechanistic interpretability and circuit intervention research.'
-        },
-        {
-          id: 'talk-smap-2026',
-          whenWhere: '2026 · Ontario',
-          heading: "People's Choice Award · NSERC CREATE sMAP Symposium",
-          detail: 'Recognized for wearable and clinical multi-site transformer signal fusion and shortcut auditing.'
-        },
-        {
-          id: 'talk-osaka-2025',
-          whenWhere: '2025 · Osaka, Japan',
-          heading: '1st Place Technical Award · IEEE AIoT 2025',
-          detail: 'International conference presentation on glass-box deep learning architectures for physiological sleep staging.'
-        },
-        {
-          id: 'talk-dubai-2025',
-          whenWhere: '2025 · Dubai, UAE',
-          heading: 'Symposium Speaker · AAAI Symposium Series',
-          detail: 'Presented operational trust calibration and accountability structures for human and clinical AI agent teams.'
-        },
-        {
-          id: 'talk-lectures',
-          whenWhere: '2022 to 2026 · Ontario',
-          heading: 'Invited Lectures & Technical Workshops · Vector Institute & Ontario Universities',
-          detail: 'Graduate and professional talks on opening black-box ML models, data hygiene, and biomedical AI translation.'
-        }
-      ];
-
-      /* 4. HELPERS */
-      function escapeHtml(str) {
-        return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
-      }
-
-      var toastEl = document.getElementById('toastContainer');
-      var toastTimer = null;
-
-      function showToast(message) {
-        if (!toastEl) return;
-        toastEl.textContent = message;
-        toastEl.classList.remove('opacity-0', 'translate-y-2');
-        toastEl.classList.add('opacity-100', 'translate-y-0');
-        if (toastTimer) clearTimeout(toastTimer);
-        toastTimer = setTimeout(function () {
-          toastEl.classList.remove('opacity-100', 'translate-y-0');
-          toastEl.classList.add('opacity-0', 'translate-y-2');
-        }, 2300);
-      }
-
-      function copyTextToClipboard(text, successMsg) {
-        var copied = false;
-        var textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.setAttribute('readonly', '');
-        textarea.style.position = 'fixed';
-        textarea.style.top = '-9999px';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        try {
-          copied = document.execCommand('copy');
-        } catch (err) {
-          copied = false;
-        }
-        document.body.removeChild(textarea);
-
-        if (!copied && navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(function () {
-            showToast(successMsg);
-          }).catch(function () {
-            showToast(successMsg);
-          });
-          return;
-        }
-        showToast(successMsg);
-      }
-
-      function highlightElement(el) {
-        if (!el) return;
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        el.classList.remove('spotlight-flash');
-        void el.offsetWidth;
-        el.classList.add('spotlight-flash');
-        setTimeout(function () {
-          el.classList.remove('spotlight-flash');
-        }, 1850);
-      }
-
-      /* 5. THEME & READING PROGRESS */
-      var rootEl = document.documentElement;
-      var themeBtns = Array.prototype.slice.call(document.querySelectorAll('[data-toggle-theme]'));
-
-      function syncThemeUI() {
-        var isDark = rootEl.classList.contains('dark');
-        themeBtns.forEach(function (btn) {
-          var lbl = btn.querySelector('.theme-label');
-          if (lbl) lbl.textContent = isDark ? '☀ Light' : '☾ Dark';
-        });
-      }
-      syncThemeUI();
-
-      function toggleTheme() {
-        var isDark = rootEl.classList.toggle('dark');
-        try {
-          localStorage.setItem('mk-portfolio-theme', isDark ? 'dark' : 'light');
-        } catch (e) { /* Ignore storage restrictions */ }
-        syncThemeUI();
-      }
-
-      themeBtns.forEach(function (btn) {
-        btn.addEventListener('click', toggleTheme);
-      });
-
-      var copyEmailBtn = document.getElementById('copyEmailBtn');
-      var copyEmailLabel = document.getElementById('copyEmailLabel');
-      if (copyEmailBtn) {
-        copyEmailBtn.addEventListener('click', function () {
-          copyTextToClipboard('mason.kadem@gmail.com', 'Copied mason.kadem@gmail.com');
-          if (copyEmailLabel) {
-            copyEmailLabel.textContent = 'Email Copied';
-            setTimeout(function () { copyEmailLabel.textContent = 'Copy Email'; }, 1900);
-          }
-        });
-      }
-
-      function updateReadingProgress() {
-        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        var pct = docHeight > 0 ? Math.min(100, Math.max(0, (window.scrollY / docHeight) * 100)) : 0;
-        rootEl.style.setProperty('--progress-width', pct.toFixed(2) + '%');
-      }
-      window.addEventListener('scroll', updateReadingProgress, { passive: true });
-      window.addEventListener('resize', updateReadingProgress, { passive: true });
-      updateReadingProgress();
-
-      /* 6. RESEARCH FILTERING, QUICK TAKE DRAWERS & BIBTEX */
-      var activePaperTab = 'all';
-      var paperQuery = '';
-      var openQuickTakeIds = {};
-
-      var paperTabsEl = document.getElementById('paperTabs');
-      var paperSearchInput = document.getElementById('paperSearchInput');
-      var papersContainer = document.getElementById('papersContainer');
-      var expandAllQuickTakesBtn = document.getElementById('expandAllQuickTakesBtn');
-
-      function getFilteredPapers() {
-        var q = paperQuery.trim().toLowerCase();
-        return PAPERS.filter(function (p) {
-          var matchesTab = activePaperTab === 'all' || p.tags.indexOf(activePaperTab) !== -1;
-          if (!matchesTab) return false;
-          if (!q) return true;
-          var hay = (p.title + ' ' + p.meta + ' ' + p.badge + ' ' + p.summary + ' ' + p.quickTake).toLowerCase();
-          return hay.indexOf(q) !== -1;
-        });
-      }
-
-      function renderPaperTabs() {
-        if (!paperTabsEl) return;
-        paperTabsEl.innerHTML = PAPER_TABS.map(function (tab) {
-          var count = tab.key === 'all'
-            ? PAPERS.length
-            : PAPERS.filter(function (p) { return p.tags.indexOf(tab.key) !== -1; }).length;
-          var isSelected = tab.key === activePaperTab;
-          var cls = isSelected
-            ? 'font-mono text-[0.75rem] px-2.5 py-1.5 rounded-lg border border-ivory-accent dark:border-obsidian-accent bg-ivory-accent dark:bg-obsidian-accent text-white dark:text-obsidian-bg font-medium transition-colors cursor-pointer'
-            : 'font-mono text-[0.75rem] px-2.5 py-1.5 rounded-lg border border-ivory-border dark:border-obsidian-border bg-ivory-card dark:bg-obsidian-card text-ivory-muted dark:text-obsidian-muted hover:border-ivory-faint dark:hover:border-obsidian-faint hover:text-ivory-text dark:hover:text-obsidian-text transition-colors cursor-pointer';
-          return '<button type="button" role="tab" aria-selected="' + isSelected + '" data-paper-tab="' + tab.key + '" class="' + cls + '">' +
-            escapeHtml(tab.label) + ' <span class="opacity-75">(' + count + ')</span></button>';
-        }).join('');
-      }
-
-      function syncExpandAllLabel(visiblePapers) {
-        if (!expandAllQuickTakesBtn) return;
-        var allOpen = visiblePapers.length > 0 && visiblePapers.every(function (p) { return !!openQuickTakeIds[p.id]; });
-        expandAllQuickTakesBtn.textContent = allOpen ? 'Close All Quick Takes' : 'Open All Quick Takes';
-      }
-
-      function renderPapers() {
-        if (!papersContainer) return;
-        var filtered = getFilteredPapers();
-        syncExpandAllLabel(filtered);
-
-        if (filtered.length === 0) {
-          papersContainer.innerHTML = '<div class="rounded-xl border border-dashed border-ivory-border dark:border-obsidian-border p-6 text-center text-[0.9rem] text-ivory-muted dark:text-obsidian-muted">No manuscripts match that query. <button type="button" id="resetPaperFilterBtn" class="ml-1 font-mono text-ivory-accent dark:text-obsidian-accent underline cursor-pointer">Reset filters</button></div>';
-          var resetBtn = document.getElementById('resetPaperFilterBtn');
-          if (resetBtn) {
-            resetBtn.addEventListener('click', function () {
-              activePaperTab = 'all';
-              paperQuery = '';
-              if (paperSearchInput) paperSearchInput.value = '';
-              renderPaperTabs();
-              renderPapers();
-            });
-          }
-          return;
-        }
-
-        papersContainer.innerHTML = filtered.map(function (p) {
-          var isOpen = !!openQuickTakeIds[p.id];
-          var linksHtml = p.links.map(function (lnk) {
-            return '<a href="' + escapeHtml(lnk.href) + '" target="_blank" rel="noopener" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80">[' + escapeHtml(lnk.label) + ']</a>';
-          }).join('');
-
-          var titleInner = p.url
-            ? '<a href="' + escapeHtml(p.url) + '" target="_blank" rel="noopener" class="text-ivory-text dark:text-obsidian-text hover:text-ivory-accent dark:hover:text-obsidian-accent transition-colors">' + escapeHtml(p.title) + '</a>'
-            : '<span class="text-ivory-text dark:text-obsidian-text">' + escapeHtml(p.title) + '</span>';
-
-          var bibtexBtn = p.bibtex
-            ? '<button type="button" data-copy-bibtex="' + escapeHtml(p.id) + '" class="text-ivory-muted dark:text-obsidian-muted hover:text-ivory-accent dark:hover:text-obsidian-accent transition-colors cursor-pointer">Copy BibTeX</button>'
-            : '<span class="text-ivory-faint dark:text-obsidian-faint">Preprint Coming Soon</span>';
-
-          return '<article id="' + escapeHtml(p.id) + '" class="rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border p-5 transition-colors">' +
-            '<div class="flex flex-wrap items-center justify-between gap-2 font-mono text-[0.73rem] text-ivory-faint dark:text-obsidian-faint mb-1.5">' +
-              '<span>' + escapeHtml(p.meta) + '</span>' +
-              '<span class="px-2 py-0.5 rounded bg-ivory-accent/10 dark:bg-obsidian-accent/15 text-ivory-accent dark:text-obsidian-accent font-medium">' + escapeHtml(p.badge) + '</span>' +
-            '</div>' +
-            '<h3 class="font-serif text-[1.17rem] font-semibold leading-[1.32] mb-1.5">' + titleInner + '</h3>' +
-            '<p class="text-[0.92rem] text-ivory-muted dark:text-obsidian-muted mb-3">' + escapeHtml(p.summary) + '</p>' +
-            '<div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 font-mono text-[0.78rem] no-print">' +
-              linksHtml +
-              '<button type="button" data-toggle-quicktake="' + escapeHtml(p.id) + '" aria-expanded="' + isOpen + '" class="text-ivory-accent dark:text-obsidian-accent underline underline-offset-4 hover:opacity-80 cursor-pointer">' +
-                (isOpen ? 'Quick Take -' : 'Quick Take +') +
-              '</button>' +
-              bibtexBtn +
-            '</div>' +
-            '<div class="quicktake-drawer ' + (isOpen ? '' : 'hidden ') + 'mt-3.5 pt-3 border-t border-dashed border-ivory-border dark:border-obsidian-border text-[0.89rem] text-ivory-text dark:text-obsidian-text">' +
-              '<span class="inline-block font-mono text-[0.72rem] uppercase tracking-wider px-1.5 py-0.5 rounded bg-ivory-surface dark:bg-obsidian-surface text-ivory-accent dark:text-obsidian-accent font-semibold mr-2">Plain-English Takeaway</span>' +
-              escapeHtml(p.quickTake) +
-            '</div>' +
-          '</article>';
-        }).join('');
-      }
-
-      if (paperTabsEl) {
-        paperTabsEl.addEventListener('click', function (e) {
-          var btn = e.target.closest('[data-paper-tab]');
-          if (!btn) return;
-          activePaperTab = btn.getAttribute('data-paper-tab') || 'all';
-          renderPaperTabs();
-          renderPapers();
-        });
-      }
-
-      if (paperSearchInput) {
-        paperSearchInput.addEventListener('input', function (e) {
-          paperQuery = e.target.value || '';
-          renderPapers();
-        });
-      }
-
-      if (papersContainer) {
-        papersContainer.addEventListener('click', function (e) {
-          var qtBtn = e.target.closest('[data-toggle-quicktake]');
-          if (qtBtn) {
-            var pid = qtBtn.getAttribute('data-toggle-quicktake');
-            openQuickTakeIds[pid] = !openQuickTakeIds[pid];
-            renderPapers();
-            return;
-          }
-          var bibBtn = e.target.closest('[data-copy-bibtex]');
-          if (bibBtn) {
-            var bid = bibBtn.getAttribute('data-copy-bibtex');
-            var found = PAPERS.filter(function (item) { return item.id === bid; })[0];
-            if (found && found.bibtex) {
-              copyTextToClipboard(found.bibtex, 'BibTeX copied to clipboard');
-            }
-          }
-        });
-      }
-
-      if (expandAllQuickTakesBtn) {
-        expandAllQuickTakesBtn.addEventListener('click', function () {
-          var visible = getFilteredPapers();
-          var allOpen = visible.length > 0 && visible.every(function (p) { return !!openQuickTakeIds[p.id]; });
-          visible.forEach(function (p) {
-            openQuickTakeIds[p.id] = !allOpen;
-          });
-          renderPapers();
-        });
-      }
-
-      renderPaperTabs();
-      renderPapers();
-
-      /* 7. DUAL-FILTER 20-COURSE TEACHING EXPLORER */
-      var activeInst = 'All Institutions';
-      var activeDomain = 'All Domains';
-      var courseQuery = '';
-
-      var instFilterBar = document.getElementById('instFilterBar');
-      var domainFilterBar = document.getElementById('domainFilterBar');
-      var courseSearchInput = document.getElementById('courseSearchInput');
-      var coursesContainer = document.getElementById('coursesContainer');
-      var courseCountBadge = document.getElementById('courseCountBadge');
-
-      function renderCourseFilters() {
-        if (instFilterBar) {
-          instFilterBar.innerHTML = INSTITUTIONS.map(function (inst) {
-            var count = inst === 'All Institutions'
-              ? COURSES.length
-              : COURSES.filter(function (c) { return c.instKey === inst; }).length;
-            var selected = activeInst === inst;
-            var cls = selected
-              ? 'font-mono text-[0.73rem] px-2.5 py-1 rounded-lg border border-ivory-accent dark:border-obsidian-accent bg-ivory-accent dark:bg-obsidian-accent text-white dark:text-obsidian-bg font-medium cursor-pointer'
-              : 'font-mono text-[0.73rem] px-2.5 py-1 rounded-lg border border-ivory-border dark:border-obsidian-border bg-ivory-card dark:bg-obsidian-card text-ivory-muted dark:text-obsidian-muted hover:text-ivory-text dark:hover:text-obsidian-text cursor-pointer';
-            return '<button type="button" data-inst="' + escapeHtml(inst) + '" aria-pressed="' + selected + '" class="' + cls + '">' +
-              escapeHtml(inst) + ' (' + count + ')</button>';
-          }).join('');
-        }
-
-        if (domainFilterBar) {
-          domainFilterBar.innerHTML = DOMAINS.map(function (dom) {
-            var selected = activeDomain === dom;
-            var cls = selected
-              ? 'font-mono text-[0.72rem] px-2.5 py-1 rounded-full border border-ivory-accent dark:border-obsidian-accent bg-ivory-accent/10 dark:bg-obsidian-accent/20 text-ivory-accent dark:text-obsidian-accent font-semibold cursor-pointer'
-              : 'font-mono text-[0.72rem] px-2.5 py-1 rounded-full border border-ivory-border dark:border-obsidian-border text-ivory-muted dark:text-obsidian-muted hover:text-ivory-text dark:hover:text-obsidian-text cursor-pointer';
-            return '<button type="button" data-domain="' + escapeHtml(dom) + '" aria-pressed="' + selected + '" class="' + cls + '">' +
-              escapeHtml(dom) + '</button>';
-          }).join('');
-        }
-      }
-
-      function renderCourses() {
-        if (!coursesContainer) return;
-        var q = courseQuery.trim().toLowerCase();
-        var filtered = COURSES.filter(function (c) {
-          var okInst = activeInst === 'All Institutions' || c.instKey === activeInst;
-          var okDom = activeDomain === 'All Domains' || c.domain === activeDomain;
-          if (!okInst || !okDom) return false;
-          if (!q) return true;
-          var hay = (c.code + ' ' + c.title + ' ' + c.institution + ' ' + c.level + ' ' + c.domain + ' ' + c.desc).toLowerCase();
-          return hay.indexOf(q) !== -1;
-        });
-
-        if (courseCountBadge) {
-          courseCountBadge.textContent = 'Showing ' + filtered.length + ' of ' + COURSES.length + ' courses';
-        }
-
-        if (filtered.length === 0) {
-          coursesContainer.innerHTML = '<div class="sm:col-span-2 rounded-xl border border-dashed border-ivory-border dark:border-obsidian-border p-5 text-center text-[0.88rem] text-ivory-muted dark:text-obsidian-muted">No courses match the active filters. <button type="button" id="resetCoursesBtn" class="ml-1 font-mono text-ivory-accent dark:text-obsidian-accent underline cursor-pointer">Show all ' + COURSES.length + ' courses</button></div>';
-          var rBtn = document.getElementById('resetCoursesBtn');
-          if (rBtn) {
-            rBtn.addEventListener('click', function () {
-              activeInst = 'All Institutions';
-              activeDomain = 'All Domains';
-              courseQuery = '';
-              if (courseSearchInput) courseSearchInput.value = '';
-              renderCourseFilters();
-              renderCourses();
-            });
-          }
-          return;
-        }
-
-        coursesContainer.innerHTML = filtered.map(function (c) {
-          return '<div id="' + escapeHtml(c.id) + '" class="course-item rounded-xl bg-ivory-card dark:bg-obsidian-card border border-ivory-border dark:border-obsidian-border p-4 flex flex-col justify-between transition-colors">' +
-            '<div>' +
-              '<div class="flex flex-wrap items-center justify-between gap-1.5 font-mono text-[0.7rem] mb-1.5">' +
-                '<span class="px-2 py-0.5 rounded bg-ivory-accent/10 dark:bg-obsidian-accent/15 text-ivory-accent dark:text-obsidian-accent font-semibold">' + escapeHtml(c.code) + '</span>' +
-                '<span class="text-ivory-faint dark:text-obsidian-faint">' + escapeHtml(c.level) + '</span>' +
-              '</div>' +
-              '<h3 class="font-serif text-[1.03rem] font-semibold leading-snug text-ivory-text dark:text-obsidian-text mb-1">' +
-                escapeHtml(c.title) +
-              '</h3>' +
-              '<p class="text-[0.83rem] leading-[1.52] text-ivory-muted dark:text-obsidian-muted">' +
-                escapeHtml(c.desc) +
-              '</p>' +
-            '</div>' +
-            '<div class="mt-3 pt-2 border-t border-ivory-border/70 dark:border-obsidian-border/70 flex flex-wrap items-center justify-between gap-1 font-mono text-[0.69rem] text-ivory-faint dark:text-obsidian-faint">' +
-              '<span class="text-ivory-text/80 dark:text-obsidian-text/80 font-medium">' + escapeHtml(c.institution) + '</span>' +
-              '<span>' + escapeHtml(c.domain) + '</span>' +
-            '</div>' +
-          '</div>';
-        }).join('');
-      }
-
-      if (instFilterBar) {
-        instFilterBar.addEventListener('click', function (e) {
-          var btn = e.target.closest('[data-inst]');
-          if (!btn) return;
-          activeInst = btn.getAttribute('data-inst') || 'All Institutions';
-          renderCourseFilters();
-          renderCourses();
-        });
-      }
-
-      if (domainFilterBar) {
-        domainFilterBar.addEventListener('click', function (e) {
-          var btn = e.target.closest('[data-domain]');
-          if (!btn) return;
-          activeDomain = btn.getAttribute('data-domain') || 'All Domains';
-          renderCourseFilters();
-          renderCourses();
-        });
-      }
-
-      if (courseSearchInput) {
-        courseSearchInput.addEventListener('input', function (e) {
-          courseQuery = e.target.value || '';
-          renderCourses();
-        });
-      }
-
-      renderCourseFilters();
-      renderCourses();
-
-      /* 8. RENDER TALKS & HONOURS */
-      var talksContainer = document.getElementById('talksContainer');
-      if (talksContainer) {
-        talksContainer.innerHTML = TALKS.map(function (t) {
-          return '<div id="' + escapeHtml(t.id) + '" class="print-avoid-break grid grid-cols-1 sm:grid-cols-[155px_1fr] gap-1 sm:gap-4 py-3.5">' +
-            '<div class="font-mono text-[0.77rem] text-ivory-faint dark:text-obsidian-faint pt-0.5">' + escapeHtml(t.whenWhere) + '</div>' +
-            '<div>' +
-              '<h3 class="font-serif text-[1.03rem] font-semibold text-ivory-text dark:text-obsidian-text">' + escapeHtml(t.heading) + '</h3>' +
-              '<p class="text-[0.88rem] text-ivory-muted dark:text-obsidian-muted mt-0.5">' + escapeHtml(t.detail) + '</p>' +
-            '</div>' +
-          '</div>';
-        }).join('');
-      }
-
-      /* 9. QUICK ORIENTATION JUMP LINKS (data-jump) */
-      document.querySelectorAll('[data-jump]').forEach(function (link) {
-        link.addEventListener('click', function (e) {
-          var targetId = link.getAttribute('data-jump');
-          if (!targetId) return;
-          e.preventDefault();
-
-          if (targetId.indexOf('paper-') === 0) {
-            activePaperTab = 'all';
-            paperQuery = '';
-            if (paperSearchInput) paperSearchInput.value = '';
-            openQuickTakeIds[targetId] = true;
-            renderPaperTabs();
-            renderPapers();
-          }
-
-          var targetEl = document.getElementById(targetId);
-          if (targetEl) {
-            highlightElement(targetEl);
-          }
-        });
-      });
-
-      /* 10. INTERSECTIONOBSERVER LIVE SCROLL SPY */
-      var spyLinks = Array.prototype.slice.call(document.querySelectorAll('.spy-link'));
-      var trackedSections = Array.prototype.slice.call(document.querySelectorAll('main section[data-section]'));
-
-      function setActiveSpy(sectionId) {
-        spyLinks.forEach(function (link) {
-          var matches = link.getAttribute('data-spy') === sectionId;
-          link.classList.toggle('active', matches);
-          if (matches) link.setAttribute('aria-current', 'true');
-          else link.removeAttribute('aria-current');
-        });
-      }
-
-      if ('IntersectionObserver' in window && trackedSections.length > 0) {
-        var observer = new IntersectionObserver(function (entries) {
-          var visible = entries.filter(function (entry) { return entry.isIntersecting; });
-          if (visible.length > 0) {
-            visible.sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
-            setActiveSpy(visible[0].target.getAttribute('data-section'));
-          }
-        }, {
-          rootMargin: '-15% 0px -65% 0px',
-          threshold: 0.02
-        });
-
-        trackedSections.forEach(function (sec) { observer.observe(sec); });
-      }
-
-      /* 11. COMMAND PALETTE MODAL (Cmd+K / Ctrl+K or /) */
-      var cmdModal = document.getElementById('cmdModal');
-      var cmdInput = document.getElementById('cmdInput');
-      var cmdResults = document.getElementById('cmdResults');
-      var cmdCloseBtn = document.getElementById('cmdCloseBtn');
-      var openCmdBtns = Array.prototype.slice.call(document.querySelectorAll('[data-open-cmd]'));
-
-      var COMMAND_ITEMS = [];
-
-      PAPERS.forEach(function (p) {
-        COMMAND_ITEMS.push({
-          category: 'Research',
-          title: p.title,
-          subtitle: p.meta + ' · ' + p.badge,
-          keywords: p.summary + ' ' + p.quickTake,
-          run: function () {
-            activePaperTab = 'all';
-            paperQuery = '';
-            if (paperSearchInput) paperSearchInput.value = '';
-            openQuickTakeIds[p.id] = true;
-            renderPaperTabs();
-            renderPapers();
-            highlightElement(document.getElementById(p.id));
-          }
-        });
-      });
-
-      COMMAND_ITEMS.push({
-        category: 'Textbook',
-        title: 'Pearls and Perils of Machine Learning',
-        subtitle: 'Adopted across 5 courses including graduate McMaster',
-        keywords: 'book textbook leakage confounders shortcuts',
-        run: function () {
-          highlightElement(document.getElementById('book-pearls-perils'));
-        }
-      });
-
-      COURSES.forEach(function (c) {
-        COMMAND_ITEMS.push({
-          category: 'Course',
-          title: c.code + ' · ' + c.title,
-          subtitle: c.institution + ' · ' + c.level + ' · ' + c.domain,
-          keywords: c.desc,
-          run: function () {
-            activeInst = 'All Institutions';
-            activeDomain = 'All Domains';
-            courseQuery = '';
-            if (courseSearchInput) courseSearchInput.value = '';
-            renderCourseFilters();
-            renderCourses();
-            highlightElement(document.getElementById(c.id));
-          }
-        });
-      });
-
-      COMMAND_ITEMS.push(
-        {
-          category: 'Venture',
-          title: 'Founder & Technical Lead · Ro (Research Online)',
-          subtitle: "Hamilton's Innovation Factory & The Clinic at McMaster",
-          keywords: 'founder startup research online digital health',
-          run: function () { highlightElement(document.getElementById('role-ro')); }
-        },
-        {
-          category: 'Leadership',
-          title: 'Head of AI · Vascular AI (McMaster University)',
-          subtitle: '5 Years · Cerebral Blood Flow & CLSA 50,000+ Cohort',
-          keywords: 'vascular ai clsa cerebral blood flow mentoring',
-          run: function () { highlightElement(document.getElementById('role-vascular')); }
-        },
-        {
-          category: 'Funding',
-          title: 'Grants, Commercialization & Patents ($210,000+ Secured)',
-          subtitle: '$90,000 MITACS Accelerate Entrepreneur & U.S. Provisional Patent',
-          keywords: 'mitacs patent funding grants',
-          run: function () { highlightElement(document.getElementById('role-grants')); }
-        }
-      );
-
-      TALKS.forEach(function (t) {
-        COMMAND_ITEMS.push({
-          category: 'Talk',
-          title: t.heading,
-          subtitle: t.whenWhere,
-          keywords: t.detail,
-          run: function () { highlightElement(document.getElementById(t.id)); }
-        });
-      });
-
-      COMMAND_ITEMS.push(
-        {
-          category: 'Section',
-          title: 'Jump to Credentials & Fellowships',
-          subtitle: 'CS PhD, MASc Biomedical Eng, MSc Neuroscience, BSc Psychology',
-          keywords: 'education degrees cihr vanier oxford compute ontario',
-          run: function () { highlightElement(document.getElementById('edu-phd')); }
-        },
-        {
-          category: 'Action',
-          title: 'Copy Email (mason.kadem@gmail.com)',
-          subtitle: 'Clipboard',
-          keywords: 'email contact',
-          run: function () { copyTextToClipboard('mason.kadem@gmail.com', 'Copied mason.kadem@gmail.com'); }
-        },
-        {
-          category: 'Action',
-          title: 'Switch Light / Dark Theme',
-          subtitle: 'Appearance',
-          keywords: 'dark light theme mode',
-          run: function () { toggleTheme(); }
-        }
-      );
-
-      var cmdFiltered = COMMAND_ITEMS.slice();
-      var cmdActiveIndex = 0;
-      var lastFocusedBeforeModal = null;
-
-      function matchCommandItems(query) {
-        var q = query.trim().toLowerCase();
-        if (!q) return COMMAND_ITEMS.slice(0, 16);
-        var tokens = q.split(/\s+/);
-        return COMMAND_ITEMS.filter(function (item) {
-          var hay = (item.category + ' ' + item.title + ' ' + item.subtitle + ' ' + item.keywords).toLowerCase();
-          return tokens.every(function (tok) { return hay.indexOf(tok) !== -1; });
-        });
-      }
-
-      function renderCommandResults() {
-        if (!cmdResults) return;
-        if (cmdFiltered.length === 0) {
-          cmdResults.innerHTML = '<li class="px-3 py-6 text-center text-[0.86rem] text-ivory-faint dark:text-obsidian-faint">No matching items found.</li>';
-          return;
-        }
-
-        cmdResults.innerHTML = cmdFiltered.map(function (item, idx) {
-          var active = idx === cmdActiveIndex;
-          var cls = active
-            ? 'px-3 py-2 rounded-lg bg-ivory-accent/12 dark:bg-obsidian-accent/20 text-ivory-text dark:text-obsidian-text cursor-pointer flex items-center justify-between gap-3'
-            : 'px-3 py-2 rounded-lg hover:bg-ivory-surface dark:hover:bg-obsidian-surface text-ivory-muted dark:text-obsidian-muted cursor-pointer flex items-center justify-between gap-3';
-          return '<li role="option" aria-selected="' + active + '" data-cmd-idx="' + idx + '" class="' + cls + '">' +
-            '<div class="min-w-0">' +
-              '<div class="text-[0.86rem] font-medium text-ivory-text dark:text-obsidian-text truncate">' + escapeHtml(item.title) + '</div>' +
-              '<div class="text-[0.74rem] text-ivory-faint dark:text-obsidian-faint truncate">' + escapeHtml(item.subtitle) + '</div>' +
-            '</div>' +
-            '<span class="shrink-0 font-mono text-[0.68rem] px-2 py-0.5 rounded bg-ivory-surface dark:bg-obsidian-surface border border-ivory-border dark:border-obsidian-border text-ivory-accent dark:text-obsidian-accent">' +
-              escapeHtml(item.category) +
-            '</span>' +
-          '</li>';
-        }).join('');
-
-        var activeNode = cmdResults.querySelector('[data-cmd-idx="' + cmdActiveIndex + '"]');
-        if (activeNode) activeNode.scrollIntoView({ block: 'nearest' });
-      }
-
-      function openCommandPalette() {
-        if (!cmdModal) return;
-        lastFocusedBeforeModal = document.activeElement;
-        cmdModal.classList.remove('hidden');
-        cmdModal.classList.add('flex');
-        if (cmdInput) {
-          cmdInput.value = '';
-          cmdFiltered = matchCommandItems('');
-          cmdActiveIndex = 0;
-          renderCommandResults();
-          setTimeout(function () { cmdInput.focus(); }, 15);
-        }
-      }
-
-      function closeCommandPalette() {
-        if (!cmdModal) return;
-        cmdModal.classList.add('hidden');
-        cmdModal.classList.remove('flex');
-        if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
-          lastFocusedBeforeModal.focus();
-        }
-      }
-
-      function executeCommandAt(idx) {
-        var item = cmdFiltered[idx];
-        if (!item) return;
-        closeCommandPalette();
-        item.run();
-      }
-
-      openCmdBtns.forEach(function (btn) {
-        btn.addEventListener('click', openCommandPalette);
-      });
-
-      if (cmdCloseBtn) {
-        cmdCloseBtn.addEventListener('click', closeCommandPalette);
-      }
-
-      if (cmdModal) {
-        cmdModal.addEventListener('click', function (e) {
-          if (e.target === cmdModal) closeCommandPalette();
-        });
-      }
-
-      if (cmdInput) {
-        cmdInput.addEventListener('input', function () {
-          cmdFiltered = matchCommandItems(cmdInput.value);
-          cmdActiveIndex = 0;
-          renderCommandResults();
-        });
-
-        cmdInput.addEventListener('keydown', function (e) {
-          if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            if (cmdFiltered.length > 0) {
-              cmdActiveIndex = (cmdActiveIndex + 1) % cmdFiltered.length;
-              renderCommandResults();
-            }
-          } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            if (cmdFiltered.length > 0) {
-              cmdActiveIndex = (cmdActiveIndex - 1 + cmdFiltered.length) % cmdFiltered.length;
-              renderCommandResults();
-            }
-          } else if (e.key === 'Enter') {
-            e.preventDefault();
-            executeCommandAt(cmdActiveIndex);
-          }
-        });
-      }
-
-      if (cmdResults) {
-        cmdResults.addEventListener('click', function (e) {
-          var row = e.target.closest('[data-cmd-idx]');
-          if (!row) return;
-          executeCommandAt(parseInt(row.getAttribute('data-cmd-idx'), 10));
-        });
-      }
-
-      document.addEventListener('keydown', function (e) {
-        var isModalOpen = cmdModal && !cmdModal.classList.contains('hidden');
-        if (e.key === 'Escape' && isModalOpen) {
-          e.preventDefault();
-          closeCommandPalette();
-          return;
-        }
-        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-          e.preventDefault();
-          if (isModalOpen) closeCommandPalette();
-          else openCommandPalette();
-          return;
-        }
-        var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
-        var isTyping = tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable);
-        if (!isTyping && !isModalOpen && e.key === '/') {
-          e.preventDefault();
-          openCommandPalette();
-        }
-      });
-    })();
-  </script>
+      </details>
+    </section>
+
+    <!-- 4. Education & Credentials -->
+    <section class="section" aria-labelledby="education-heading">
+      <h2 id="education-heading">Education &amp; Credentials</h2>
+
+      <ul class="edu-list">
+        <li>
+          <span class="edu-degree">PhD in Computer Science</span> (AI specialization), McMaster University · <mark>CIHR Doctoral Scholarship ($120,000)</mark>, <mark>Vanier Canada Graduate Scholarship Nominee</mark>
+        </li>
+        <li>
+          <span class="edu-degree">MASc in Biomedical Engineering</span>, McMaster University · <mark>Ranked in the top 5% of students</mark>
+        </li>
+        <li>
+          <span class="edu-degree">MSc in Neuroscience</span>, Schulich School of Medicine and Dentistry, Western University
+        </li>
+        <li>
+          <span class="edu-degree">Honours BSc in Psychology</span>, Brain and Mind Institute, Western University
+        </li>
+        <li>
+          <span class="edu-degree">Certifications</span> · Machine Learning Theory (University of Oxford), High-Performance Computing (Compute Ontario), Certificate in University Teaching (Western University)
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      Mason Kadem · Dundas, Ontario
+    </footer>
+
+  </main>
 </body>
 </html>
